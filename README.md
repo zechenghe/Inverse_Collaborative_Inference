@@ -1,1 +1,1 @@
-# Inverse_Collaborative_Inference
+# Inverse Collaborative Inference
