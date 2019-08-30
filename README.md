@@ -1,1 +1,1 @@
-# Inverse_Collaborative_Inference
+# Model Inverse Attack against Collaborative Inference
