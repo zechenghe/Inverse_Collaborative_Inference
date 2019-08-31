@@ -124,7 +124,6 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
         refFeature = net.getLayerOutput(targetImg, targetLayer)
 
     print "refFeature.size()", refFeature.size()
-    print "refFeature: ", refFeature.cpu().detach().numpy()
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")
@@ -158,15 +157,6 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
 
         print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
 
-        if (i+1) % saveIter == 0:
-            if not os.path.exists(save_img_dir):
-                os.makedirs(save_img_dir)
-
-            imgGen = xGen.clone()
-            imgGen = deprocess(imgGen)
-            torchvision.utils.save_image(imgGen, save_img_dir + 'xGen' + str(i+1) + '.png')
-            print "Max: ", np.max(imgGen.cpu().detach().numpy()), "Min ", np.min(imgGen.cpu().detach().numpy())
-
     # save the final result
     imgGen = xGen.clone()
     imgGen = deprocess(imgGen)
@@ -198,7 +188,6 @@ if __name__ == '__main__':
         parser.add_argument('--decrease_LR', type = int, default = 20)
         parser.add_argument('--gpu', type = bool, default = True)
         parser.add_argument('--layer', type = str, default = 'conv22')
-        parser.add_argument('--method', type = str, default = "MSE_TV")
         parser.add_argument('--save_iter', type = int, default = 10)
         parser.add_argument('--inverseClass', type = int, default = None)
         args = parser.parse_args()
@@ -206,7 +195,7 @@ if __name__ == '__main__':
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
 
-        save_img_dir = "inverted/" + args.dataset + '/' + args.method + '/'
+        save_img_dir = "inverted/" + args.dataset + '/' + args.layer + '/'
 
         if args.dataset == 'MNIST':
 
