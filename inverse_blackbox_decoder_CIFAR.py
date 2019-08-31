@@ -23,10 +23,10 @@ from utils import *
 #####################
 # Note:
 # Training:
-# python inverse_blackbox_decoder_CIFAR.py --layer conv22 --iter 50 --training --decodername CIFAR10CNNDecoderconv22
+# python inverse_blackbox_decoder_CIFAR.py --layer ReLU22 --iter 50 --training --decodername CIFAR10CNNDecoderReLU22
 #
 # Testing:
-# python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecoderconv22 --layer conv22
+# python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecoderReLU22 --layer ReLU22
 #####################
 
 
