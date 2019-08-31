@@ -62,6 +62,8 @@ def train(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NEpochs = 200, imageWidth
         tsf = {
             'train': transforms.Compose(
             [
+            transforms.RandomHorizontalFlip(),
+            transforms.RandomAffine(degrees = 10, translate = [0.1, 0.1], scale = [0.9, 1.1]),
             transforms.ToTensor(),
             Normalize
             ]),
