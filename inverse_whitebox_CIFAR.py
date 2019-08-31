@@ -195,7 +195,7 @@ if __name__ == '__main__':
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
 
-        save_img_dir = "inverted/" + args.dataset + '/' + args.layer + '/'
+        save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/'
 
         if args.dataset == 'MNIST':
 
