@@ -60,6 +60,11 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
         Unnormalize = transforms.Normalize((-mu / sigma).tolist(), (1.0 / sigma).tolist())
 
         tsf = {
+            'train': transforms.Compose(
+            [
+            transforms.ToTensor(),
+            Normalize
+            ]),
             'test': transforms.Compose(
             [
             transforms.ToTensor(),
