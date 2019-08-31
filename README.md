@@ -5,4 +5,4 @@
 
 pip install torchvision==0.2.1
 
-python training.py --dataset MNIST --nogpu --epochs 20
+python training.py --dataset CIFAR10 --epochs 50
