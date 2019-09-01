@@ -4,7 +4,7 @@ This code implements model inversion attacks against collaborative inference in 
 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019
 
-#### 1.Pre-requisite:
+### 1.Pre-requisite:
 #### python 2.7
 #### numpy
 pip install numpy
@@ -13,7 +13,7 @@ pip install torch
 #### torchvision version 0.2.1:
 pip install torchvision==0.2.1
 
-#### 2.Run the code:
+### 2.Run the code:
 #### (1) Train the target CIFAR model to inverse
 
 python training.py --dataset CIFAR10 --epochs 50
@@ -35,4 +35,6 @@ python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 
 #### Inverse the shadow model
 
-#### 3.Reference
+### 3.Tips
+
+### 4.Reference
