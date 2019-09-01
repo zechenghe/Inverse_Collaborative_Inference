@@ -20,7 +20,7 @@ from utils import *
 #####################
 # Note:
 # Training:
-# python inverse_access_free_CIFAR.py --layer conv11 --iter 50 --training
+# python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 #
 # Testing:
 # python inverse_access_free_CIFAR.py --testing --layer conv11 --iter 500 --learning_rate 1e-2 --lambda_TV 0.0 --lambda_l2 0.0
