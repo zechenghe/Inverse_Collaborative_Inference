@@ -5,13 +5,13 @@ This code implements model inversion attacks against collaborative inference in 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019
 
 
-### Pre-requisite:
-#### python 2.7
-#### numpy
+#### Pre-requisite:
+#### 1.python 2.7
+#### 2.numpy
 pip install numpy
-#### pytorch
+#### 3.pytorch
 pip install torch
-#### torchvision version 0.2.1:
+#### 4.torchvision version 0.2.1:
 pip install torchvision==0.2.1
 
 python training.py --dataset CIFAR10 --epochs 50
