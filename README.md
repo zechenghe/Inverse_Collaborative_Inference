@@ -30,4 +30,9 @@ python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecod
 
 #### (4) Access-free Attack
 
+#### Train a shadow model
+python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
+
+#### Inverse the shadow model
+
 #### 3.Reference
