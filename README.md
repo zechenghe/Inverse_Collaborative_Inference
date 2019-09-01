@@ -20,10 +20,13 @@ python training.py --dataset CIFAR10 --epochs 50
 
 #### (2) Whitebox Regularized Maximum Likelihood Estimation (rMLE)
 
-python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer conv11 --lambda_TV 0.0 --lambda_l2 0.0
+python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer ReLU22 --lambda_TV 1e1 --lambda_l2 0.0
 
 #### (3) Blackbox Inverse Network
-
+#### Train inverse network
+python inverse_blackbox_decoder_CIFAR.py --layer ReLU22 --iter 50 --training --decodername CIFAR10CNNDecoderReLU22
+#### Inference inverse network
+python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecoderReLU22 --layer ReLU22
 
 #### (4) Access-free Attack
 
