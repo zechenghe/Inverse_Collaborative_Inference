@@ -1,7 +1,5 @@
-# @Author: zechenghe
-# @Date:   2019-01-30T14:28:07-05:00
-# @Last modified by:   zechenghe
-# @Last modified time: 2019-02-01T14:58:22-05:00
+# @Author: Zecheng He
+# @Date:   2019-08-31
 
 import time
 import math
