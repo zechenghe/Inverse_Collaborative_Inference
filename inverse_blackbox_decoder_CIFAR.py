@@ -299,7 +299,7 @@ if __name__ == '__main__':
         model_name = "ckpt.pth"
         decoder_name = args.decodername + '.pth'
 
-        save_img_dir = "inverted_blackbox_decoder/" + args.dataset + '/'
+        save_img_dir = "inverted_blackbox_decoder/" + args.dataset + '/' + args.layer + '/'
 
         if args.dataset == 'CIFAR10':
 
