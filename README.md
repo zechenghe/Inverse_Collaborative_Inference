@@ -1,8 +1,15 @@
 # Model Inverse Attack against Collaborative Inference
 
-## Pre-requisite:
-### 1. torchvision version 0.2.1:
+This code implements model inversion attacks against collaborative inference in the following paper:
 
+
+## Pre-requisite:
+### python 2.7
+### numpy
+pip install numpy
+### pytorch
+pip install torch
+### torchvision version 0.2.1:
 pip install torchvision==0.2.1
 
 python training.py --dataset CIFAR10 --epochs 50
