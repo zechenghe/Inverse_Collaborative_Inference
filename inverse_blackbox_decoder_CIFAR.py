@@ -45,8 +45,6 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
         tsf = {
             'train': transforms.Compose(
             [
-            #transforms.RandomHorizontalFlip(),
-            #transforms.RandomAffine(degrees = 10, translate = [0.1, 0.1], scale = [0.9, 1.1]),
             transforms.ToTensor(),
             Normalize
             ]),
@@ -102,15 +100,12 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
 
     print decoderNet
 
-    #alternativeNet = MLPAlternative(batchX.size()[1:], originalModelOutput.size()[1:]).cuda()
-
     NBatch = len(trainset) / BatchSize
     MSELossLayer = torch.nn.MSELoss().cuda()
+
     # Find the optimal config according to the hardware
     cudnn.benchmark = True
     optimizer = optim.Adam(params = decoderNet.parameters(), lr = learningRate, eps = eps, amsgrad = AMSGrad)
-
-    #exit(0)
 
     for epoch in range(NEpochs):
         lossTrain = 0.0
@@ -130,12 +125,7 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
             originalModelOutput = net.getLayerOutput(batchX, net.layerDict[layer]).clone()
             decoderNetOutput = decoderNet.forward(originalModelOutput)
 
-            #print "originalModelOutput.size()", originalModelOutput.size()
-            #print "decoderNetOutput.size()", decoderNetOutput.size()
-
             assert batchX.cpu().detach().numpy().shape == decoderNetOutput.cpu().detach().numpy().shape
-            #print "batchX.shape ", batchX.cpu().detach().numpy().shape
-            #print "decoderNetOutput.shape ", decoderNetOutput.cpu().detach().numpy().shape
 
             featureLoss = MSELossLayer(batchX, decoderNetOutput)
             totalLoss = featureLoss
@@ -189,8 +179,6 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
         tsf = {
             'train': transforms.Compose(
             [
-            #transforms.RandomHorizontalFlip(),
-            #transforms.RandomAffine(degrees = 10, translate = [0.1, 0.1], scale = [0.9, 1.1]),
             transforms.ToTensor(),
             Normalize
             ]),
@@ -268,33 +256,14 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
     refFeature = net.getLayerOutput(targetImg, targetLayer)
 
     print "refFeature.size()", refFeature.size()
-    #print "refFeature: ", refFeature.cpu().detach().numpy()
 
     xGen = decoderNet.forward(refFeature)
     print "MSE ", MSELossLayer(targetImg, xGen).cpu().detach().numpy()
-
-    #refFeature = torch.zeros([1,10], device = 'cuda')
-    #refFeature[0,0] = 20
-
-
-#    print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
-#    if (i+1) % saveIter == 0:
-#        if not os.path.exists(save_img_dir):
-#            os.makedirs(save_img_dir)
-#        imgGen = xGen.clone()
-#        imgGen = deprocess(imgGen)
-#        torchvision.utils.save_image(imgGen, save_img_dir + 'xGen' + str(i+1) + '.png')
-#        print "Max: ", np.max(imgGen.cpu().detach().numpy()), "Min ", np.min(imgGen.cpu().detach().numpy())
 
     # save the final result
     imgGen = xGen.clone()
     imgGen = deprocess(imgGen)
     torchvision.utils.save_image(imgGen, save_img_dir + str(inverseClass) + '-inv.png')
-
-#    print "targetImg l1 Stat:"
-#    getL1Stat(net, targetImg)
-#    print "xGen l1 Stat:"
-#    getL1Stat(net, xGen)
 
     print "Done"
 
@@ -313,7 +282,6 @@ if __name__ == '__main__':
         parser.add_argument('--testing', dest='training', action='store_false')
         parser.set_defaults(training=False)
 
-        #parser.add_argument('--training', type = bool, default = False)
         parser.add_argument('--iters', type = int, default = 500)
         parser.add_argument('--eps', type = float, default = 1e-3)
         parser.add_argument('--AMSGrad', type = bool, default = True)
