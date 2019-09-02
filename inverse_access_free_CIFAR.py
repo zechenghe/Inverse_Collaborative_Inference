@@ -23,8 +23,6 @@ from utils import *
 # python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 #
 # Testing:
-#
-# ReLU22:
 # python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
 #####################
 
