@@ -48,7 +48,7 @@ Please make sure you use torchvision 0.2.1:
 
 import torchvision
 
-print torchvision.__version__
+print torchvision.\_\_version\_\_
 
 <br/>
 
