@@ -8,7 +8,7 @@ Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collabo
 #### python 2.7
 #### numpy
 pip install numpy
-#### pytorch
+#### pytorch 1.0.0
 pip install torch
 #### torchvision version 0.2.1:
 pip install torchvision==0.2.1
@@ -37,5 +37,12 @@ python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
 
 ### 3.Tips
+
+Please make sure you use torchvision 0.2.1.
+
+import torchvision
+
+print torchvision.__version__
+
 
 ### 4.Reference
