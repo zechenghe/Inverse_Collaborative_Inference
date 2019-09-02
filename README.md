@@ -38,7 +38,7 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
     python inverse_access_free_CIFAR.py --training --layer ReLU22 --iter 50
 
 #### Inverse the shadow model
-    python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
+    python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 2e0 --lambda_l2 0.0
 
 <br/>
 
