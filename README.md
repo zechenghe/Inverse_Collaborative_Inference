@@ -44,11 +44,13 @@ python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learni
 
 ### 3.Tips
 
-Please make sure you use torchvision 0.2.1:
+(1) Please make sure to use torchvision v0.2.1:
 
 import torchvision
 
 print torchvision.\_\_version\_\_
+
+(2) If no gpu supported, use --nogpu option in the command line.
 
 <br/>
 
