@@ -25,7 +25,7 @@ from utils import *
 # Testing:
 #
 # ReLU22:
-# python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
+# python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
 #####################
 
 
