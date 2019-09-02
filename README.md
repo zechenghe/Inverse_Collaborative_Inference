@@ -4,7 +4,9 @@ This code implements model inversion attacks against collaborative inference in 
 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019
 
-### 1.Pre-requisite:
+We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Section 5) and query-free attack (Section 6) on CIFAR10 dataset. Attacks against MNIST are similar.
+
+### 1.Dependencies:
 #### python 2.7
 #### numpy
 pip install numpy
@@ -38,7 +40,7 @@ python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learni
 
 ### 3.Tips
 
-Please make sure you use torchvision 0.2.1.
+Please make sure you use torchvision 0.2.1:
 
 import torchvision
 
