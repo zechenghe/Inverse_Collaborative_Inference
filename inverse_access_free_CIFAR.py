@@ -342,24 +342,10 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
 
         print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
 
-        if (i+1) % saveIter == 0:
-            if not os.path.exists(save_img_dir):
-                os.makedirs(save_img_dir)
-
-            imgGen = xGen.clone()
-            imgGen = deprocess(imgGen)
-            torchvision.utils.save_image(imgGen, save_img_dir + 'xGen' + str(i+1) + '.png')
-            print "Max: ", np.max(imgGen.cpu().detach().numpy()), "Min ", np.min(imgGen.cpu().detach().numpy())
-
     # save the final result
     imgGen = xGen.clone()
     imgGen = deprocess(imgGen)
     torchvision.utils.save_image(imgGen, save_img_dir + str(inverseClass) + '-inv.png')
-
-    print "targetImg l1 Stat:"
-    getL1Stat(net, targetImg)
-    print "xGen l1 Stat:"
-    getL1Stat(net, xGen)
 
     print "Done"
 
