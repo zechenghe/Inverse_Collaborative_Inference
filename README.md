@@ -15,6 +15,7 @@ pip install torch
 #### torchvision version 0.2.1:
 pip install torchvision==0.2.1
 
+
 ### 2.Run the code:
 #### (1) Train the target CIFAR model to inverse
 
@@ -37,6 +38,7 @@ python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 
 #### Inverse the shadow model
 python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
+
 
 ### 3.Tips
 
