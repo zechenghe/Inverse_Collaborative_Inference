@@ -57,9 +57,15 @@ print torchvision.\_\_version\_\_
 ### 4.Reference
 
 @inproceedings{he2019model,
+
   title={Model Inversion Attacks Against Collaborative Inference},
+
   author={He, Zecheng and Zhang, Tianwei and Lee, Ruby B},
+
   booktitle={Proceedings of the 35th Annual Computer Security Applications Conference},
+
   year={2019},
+
   organization={ACM}
+
 }
