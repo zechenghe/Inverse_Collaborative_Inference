@@ -403,7 +403,7 @@ if __name__ == '__main__':
         model_name = "ckpt.pth"
         alternative_model_name = args.altmodelname + args.layer + '.pth'
 
-        save_img_dir = "inverted_access_free/" + args.dataset + '/' + args.method + '/'
+        save_img_dir = "inverted_access_free/" + args.dataset + '/' + args.layer + '/'
 
         if args.dataset == 'CIFAR10':
 
