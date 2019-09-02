@@ -49,7 +49,7 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
     import torchvision
     print torchvision.__version__
 
-(2) If no gpu supported on your machine, use --nogpu option in the command line.
+(2) If no gpu supported on your machine, add --nogpu option in the command line.
 
 <br/>
 
