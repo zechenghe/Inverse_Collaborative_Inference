@@ -47,24 +47,20 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 (1) Please make sure to use torchvision v0.2.1:
 
     import torchvision
-    print torchvision.\_\_version\_\_
+    print torchvision.__version__
 
-(2) If no gpu supported, use --nogpu option in the command line.
+(2) If no gpu supported on your machine, use --nogpu option in the command line.
 
 <br/>
 
 ### 4.Reference
-
+You are encouraged to cite the following paper.
+```
 @inproceedings{he2019model,
-
   title={Model Inversion Attacks Against Collaborative Inference},
-
   author={He, Zecheng and Zhang, Tianwei and Lee, Ruby B},
-
   booktitle={Proceedings of the 35th Annual Computer Security Applications Conference},
-
   year={2019},
-
   organization={ACM}
-
 }
+```
