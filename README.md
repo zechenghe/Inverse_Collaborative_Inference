@@ -34,6 +34,7 @@ python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecod
 python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 
 #### Inverse the shadow model
+python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
 
 ### 3.Tips
 
