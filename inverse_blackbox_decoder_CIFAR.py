@@ -18,7 +18,6 @@ from net import *
 from utils import *
 
 #####################
-# Note:
 # Training:
 # python inverse_blackbox_decoder_CIFAR.py --layer ReLU22 --iter 50 --training --decodername CIFAR10CNNDecoderReLU22
 #

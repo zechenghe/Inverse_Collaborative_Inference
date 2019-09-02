@@ -17,7 +17,7 @@ from net import *
 from utils import *
 
 #####################
-# Hyperparameters
+# Useful Hyperparameters:
 
 # CIFAR conv11
 # python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer conv11 --lambda_TV 0.0 --lambda_l2 0.0

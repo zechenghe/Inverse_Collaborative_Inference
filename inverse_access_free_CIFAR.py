@@ -18,12 +18,11 @@ from net import *
 from utils import *
 
 #####################
-# Note:
 # Training:
 # python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 #
 # Testing:
-# python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
+# python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 2e0 --lambda_l2 0.0
 #####################
 
 
@@ -156,11 +155,7 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
             optimizer.zero_grad()
 
             edgeOutput = alternativeNet.forward(batchX).clone()
-            #cloudOuput = net.forward(batchX)
             cloudOuput = net.forward_from(edgeOutput, layer)
-
-            #print "edgeOutput.size()", edgeOutput.size()
-            #print "cloudOuput.size()", cloudOuput.size()
 
             featureLoss = CrossEntropyLossLayer(cloudOuput, batchY)
 
@@ -170,7 +165,6 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
 
             lossTrain += totalLoss.cpu().detach().numpy() / NBatch
 
-
         valData, valLabel = iter(testloader).next()
         if gpu:
             valData = valData.cuda()
@@ -178,7 +172,6 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
         edgeOutput = alternativeNet.forward(valData)
         cloudOuput = net.forward_from(edgeOutput, layer).clone()
         valLoss = CrossEntropyLossLayer(cloudOuput, valLabel)
-        #print "Epoch ", epoch, "Train Loss: ", totalLoss, "Test Loss: ", valLoss.cpu().detach().numpy()
 
         accTestSplitModel = evalTestSplitModel(testloader, alternativeNet, net, layer, gpu = gpu)
         print "Epoch ", epoch, "Train Loss: ", lossTrain, "Test Loss: ", valLoss.cpu().detach().numpy(), "Test Accuracy", accTestSplitModel
@@ -223,8 +216,6 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
         tsf = {
             'train': transforms.Compose(
             [
-            #transforms.RandomHorizontalFlip(),
-            #transforms.RandomAffine(degrees = 10, translate = [0.1, 0.1], scale = [0.9, 1.1]),
             transforms.ToTensor(),
             Normalize
             ]),
@@ -305,17 +296,12 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
     refFeature = net.getLayerOutput(targetImg, targetLayer)
 
     print "refFeature.size()", refFeature.size()
-    print "refFeature: ", refFeature.cpu().detach().numpy()
-
-    #refFeature = torch.zeros([1,10], device = 'cuda')
-    #refFeature[0,0] = 20
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")
     else:
         xGen = torch.zeros(targetImg.size(), requires_grad = True)
 
-    #optimizer = optim.SGD(params = [xGen], lr = learningRate)
     optimizer = optim.Adam(params = [xGen], lr = learningRate, eps = eps, amsgrad = AMSGrad)
 
     for i in range(NIters):
@@ -327,9 +313,8 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
 
         TVLoss = TV(xGen)
         normLoss = l2loss(xGen)
-        #conv1Loss = l1loss(net.getLayerOutput(xGen, net.ReLU1))
 
-        totalLoss = featureLoss + lambda_TV * TVLoss + lambda_l2 * normLoss #- 1.0 * conv1Loss
+        totalLoss = featureLoss + lambda_TV * TVLoss + lambda_l2 * normLoss
 
         totalLoss.backward(retain_graph=True)
         optimizer.step()
@@ -358,7 +343,6 @@ if __name__ == '__main__':
         parser.add_argument('--testing', dest='training', action='store_false')
         parser.set_defaults(training=False)
 
-        #parser.add_argument('--training', type = bool, default = False)
         parser.add_argument('--iters', type = int, default = 50)
         parser.add_argument('--eps', type = float, default = 1e-3)
         parser.add_argument('--lambda_TV', type = float, default = 1.0)
