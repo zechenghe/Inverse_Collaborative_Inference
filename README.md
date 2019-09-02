@@ -9,10 +9,13 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 ### 1.Dependencies:
 #### python 2.7
 #### numpy
+>block quote
 pip install numpy
 #### pytorch 1.0.0
+>block quote
 pip install torch
 #### torchvision version 0.2.1:
+>block quote
 pip install torchvision==0.2.1
 
 <br/>
