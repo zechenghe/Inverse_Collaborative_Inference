@@ -9,39 +9,36 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 ### 1.Dependencies:
 #### python 2.7
 #### numpy
->block quote
-pip install numpy
+    pip install numpy
 #### pytorch 1.0.0
->block quote
-pip install torch
+    pip install torch
 #### torchvision version 0.2.1:
->block quote
-pip install torchvision==0.2.1
+    pip install torchvision==0.2.1
 
 <br/>
 
 ### 2.Run the code:
 #### (1) Train the target CIFAR model to inverse
 
-python training.py --dataset CIFAR10 --epochs 50
+    python training.py --dataset CIFAR10 --epochs 50
 
 #### (2) Whitebox Regularized Maximum Likelihood Estimation (rMLE, Section 4)
 
-python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer ReLU22 --lambda_TV 1e1 --lambda_l2 0.0
+    python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer ReLU22 --lambda_TV 1e1 --lambda_l2 0.0
 
 #### (3) Blackbox Inverse Network (Section 5)
 #### Train inverse network
-python inverse_blackbox_decoder_CIFAR.py --layer ReLU22 --iter 50 --training --decodername CIFAR10CNNDecoderReLU22
+    python inverse_blackbox_decoder_CIFAR.py --layer ReLU22 --iter 50 --training --decodername CIFAR10CNNDecoderReLU22
 #### Inference inverse network
-python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecoderReLU22 --layer ReLU22
+    python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecoderReLU22 --layer ReLU22
 
 #### (4) Access-free Attack (Section 6)
 
 #### Train a shadow model
-python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
+    python inverse_access_free_CIFAR.py --layer ReLU22 --iter 50 --training
 
 #### Inverse the shadow model
-python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
+    python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 5e0 --lambda_l2 0.0
 
 <br/>
 
@@ -49,9 +46,8 @@ python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learni
 
 (1) Please make sure to use torchvision v0.2.1:
 
-import torchvision
-
-print torchvision.\_\_version\_\_
+    import torchvision
+    print torchvision.\_\_version\_\_
 
 (2) If no gpu supported, use --nogpu option in the command line.
 
