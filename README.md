@@ -1,4 +1,4 @@
-# Model Inverse Attack against Collaborative Inference
+# Model Inversion Attack against Collaborative Inference
 
 This code implements model inversion attacks against collaborative inference in the following paper:
 
