@@ -229,6 +229,8 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
     accTest = evalTest(testloader, net, gpu = gpu)
 
     decoderNet = torch.load(model_dir + decoder_name)
+    if not gpu:
+        decoderNet = decoderNet.cpu()
     decoderNet.eval()
     print decoderNet
     print "Validate the alternative model..."
