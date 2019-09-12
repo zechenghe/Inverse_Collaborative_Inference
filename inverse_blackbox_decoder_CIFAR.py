@@ -294,11 +294,13 @@ if __name__ == '__main__':
         parser.add_argument('--batch_size', type = int, default = 32)
         parser.add_argument('--learning_rate', type = float, default = 1e-3)
         parser.add_argument('--decrease_LR', type = int, default = 10)
-        parser.add_argument('--gpu', type = bool, default = True)
         parser.add_argument('--layer', type = str, default = 'ReLU22')
         parser.add_argument('--save_iter', type = int, default = 10)
         parser.add_argument('--inverseClass', type = int, default = 0)
         parser.add_argument('--decodername', type = str, default = "CIFAR10CNNDecoderReLU22")
+
+        parser.add_argument('--nogpu', dest='gpu', action='store_false')
+        parser.set_defaults(gpu=True)
         args = parser.parse_args()
 
         model_dir = "checkpoints/" + args.dataset + '/'
