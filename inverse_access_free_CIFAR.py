@@ -342,7 +342,6 @@ if __name__ == '__main__':
         parser.add_argument('--training', dest='training', action='store_true')
         parser.add_argument('--testing', dest='training', action='store_false')
         parser.set_defaults(training=False)
-
         parser.add_argument('--iters', type = int, default = 50)
         parser.add_argument('--eps', type = float, default = 1e-3)
         parser.add_argument('--lambda_TV', type = float, default = 1.0)
@@ -357,7 +356,6 @@ if __name__ == '__main__':
         parser.add_argument('--inverseClass', type = int, default = 0)
         parser.add_argument('--altmodelname', type = str, default = "CIFAR10CNNAccessFree")
 
-        parser.add_argument('--gpu', dest='gpu', action='store_true')
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
 

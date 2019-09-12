@@ -81,7 +81,8 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
 
     # Get dims of input/output, and construct the network
     batchX, batchY = trainIter.next()
-    batchX = batchX.cuda()
+    if gpu:
+        batchX = batchX.cuda()
     originalModelOutput = net.getLayerOutput(batchX, net.layerDict[layer]).clone()
 
     decoderNetDict = {
@@ -92,12 +93,16 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
         }
     }
     decoderNetFunc = decoderNetDict[network][layer]
-    decoderNet = decoderNetFunc(originalModelOutput.shape[1]).cuda()
+    decoderNet = decoderNetFunc(originalModelOutput.shape[1])
+    if gpu:
+        decoderNet = decoderNet.cuda()
 
     print decoderNet
 
     NBatch = len(trainset) / BatchSize
-    MSELossLayer = torch.nn.MSELoss().cuda()
+    MSELossLayer = torch.nn.MSELoss()
+    if gpu:
+        MSELossLayer = MSELossLayer.cuda()
 
     # Find the optimal config according to the hardware
     cudnn.benchmark = True
@@ -113,8 +118,9 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
                 trainIter = iter(trainloader)
                 batchX, batchY = trainIter.next()
 
-            batchX = batchX.cuda()
-            batchY = batchY.cuda()
+            if gpu:
+                batchX = batchX.cuda()
+                batchY = batchY.cuda()
 
             optimizer.zero_grad()
 
@@ -131,8 +137,9 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
             lossTrain += totalLoss / NBatch
 
         valData, valLabel = iter(testloader).next()
-        valData = valData.cuda()
-        valLabel = valLabel.cuda()
+        if gpu:
+            valData = valData.cuda()
+            valLabel = valLabel.cuda()
         originalModelOutput = net.getLayerOutput(valData, net.layerDict[layer]).clone()
         decoderNetOutput = decoderNet.forward(originalModelOutput)
         valLoss = MSELossLayer(valData, decoderNetOutput)
@@ -224,12 +231,15 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
     print decoderNet
     print "Validate the alternative model..."
     batchX, batchY = iter(testloader).next()
-    batchX = batchX.cuda()
-    batchY = batchY.cuda()
+    if gpu:
+        batchX = batchX.cuda()
+        batchY = batchY.cuda()
 
     print "batchX.shape ", batchX.cpu().detach().numpy().shape
 
-    MSELossLayer = torch.nn.MSELoss().cuda()
+    MSELossLayer = torch.nn.MSELoss()
+    if gpu:
+        MSELossLayer = MSELossLayer.cuda()
     originalModelOutput = net.getLayerOutput(batchX, net.layerDict[layer]).clone()
     decoderNetOutput = decoderNet.forward(originalModelOutput)
 
@@ -246,8 +256,8 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
         os.makedirs(save_img_dir)
     torchvision.utils.save_image(deprocessImg, save_img_dir + str(inverseClass) + '-ref.png')
 
-
-    targetImg = targetImg.cuda()
+    if gpu:
+        targetImg = targetImg.cuda()
     targetLayer = net.layerDict[layer]
     refFeature = net.getLayerOutput(targetImg, targetLayer)
 
