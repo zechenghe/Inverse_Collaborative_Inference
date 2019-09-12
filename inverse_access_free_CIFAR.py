@@ -75,10 +75,9 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
     testIter = iter(testloader)
 
     # Load the trained model
-    if gpu:
-        net = torch.load(model_dir + model_name).cuda()
-    else:
-        net = torch.load(model_dir + model_name)
+    net = torch.load(model_dir + model_name)
+    if not gpu:
+        net = net.cpu()
 
     net.eval()
     print "Validate the model accuracy..."
@@ -256,11 +255,15 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
 
     # Load the trained model
     net = torch.load(model_dir + model_name)
+    if not gpu:
+        net = net.cpu()
     net.eval()
     print "Validate the model accuracy..."
     accTest = evalTest(testloader, net, gpu = gpu)
 
     alternativeNet = torch.load(model_dir + alternative_model_name)
+    if not gpu:
+        alternativeNet = alternativeNet.cpu()
     alternativeNet.eval()
     print alternativeNet
     print "Validate the alternative model..."
