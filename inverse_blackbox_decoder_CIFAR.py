@@ -222,6 +222,8 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
 
 
     net = torch.load(model_dir + model_name)
+    if not gpu:
+        net = net.cpu()
     net.eval()
     print "Validate the model accuracy..."
     accTest = evalTest(testloader, net, gpu = gpu)
