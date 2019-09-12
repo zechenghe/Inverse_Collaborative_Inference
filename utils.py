@@ -98,10 +98,6 @@ def evalTest(testloader, net, gpu = True):
             batchY = batchY.cuda()
         logits = net.forward(batchX)
 
-        #softmax = nn.Softmax().cuda()
-        #prob = softmax(logits)
-        #print prob[:100,:].max(dim=1)
-
         if gpu:
             pred = np.argmax(logits.cpu().detach().numpy(), axis = 1)
             groundTruth = batchY.cpu().detach().numpy()
