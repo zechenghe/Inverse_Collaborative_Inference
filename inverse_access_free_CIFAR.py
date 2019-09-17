@@ -77,7 +77,7 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
     # Load the trained model
     net = torch.load(model_dir + model_name)
     if not gpu:
-        net = net.cpu()
+        net = torch.load(model_dir + model_name).cpu()
 
     net.eval()
     print "Validate the model accuracy..."

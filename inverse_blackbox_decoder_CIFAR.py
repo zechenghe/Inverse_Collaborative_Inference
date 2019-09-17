@@ -329,7 +329,7 @@ if __name__ == '__main__':
             trainDecoderDNN(DATASET = args.dataset, network = 'CIFAR10CNNDecoder', NEpochs = args.iters, imageWidth = imageWidth,
             imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer, BatchSize = args.batch_size, learningRate = args.learning_rate,
             NDecreaseLR = args.decrease_LR, eps = args.eps, AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth", save_decoder_dir = "checkpoints/CIFAR10/",
-            decodername_name = decoder_name, gpu = True)
+            decodername_name = decoder_name, gpu = args.gpu)
 
         else:
             for c in range(NClasses):
