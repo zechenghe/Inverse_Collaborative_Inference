@@ -29,7 +29,7 @@ from utils import *
 def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs = 50, imageWidth = 32,
             imageHeight = 32, imageSize = 32*32, NChannels = 3, NClasses = 10, layer = 'ReLU22', BatchSize = 32, learningRate = 1e-3,
             NDecreaseLR = 20, eps = 1e-3, AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth", save_decoder_dir = "checkpoints/CIFAR10/",
-            decodername_name = 'CIFAR10CNNDecoderReLU22', gpu = True):
+            decodername_name = 'CIFAR10CNNDecoderReLU22', gpu = True, validation=False):
 
     print "DATASET: ", DATASET
 
@@ -77,7 +77,9 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
     net = torch.load(model_dir + model_name)
     net.eval()
     print "Validate the model accuracy..."
-    accTest = evalTest(testloader, net, gpu = gpu)
+
+    if validation:
+        accTest = evalTest(testloader, net, gpu = gpu)
 
     # Get dims of input/output, and construct the network
     batchX, batchY = trainIter.next()
@@ -149,10 +151,11 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
             learningRate = learningRate / 2.0
             setLearningRate(optimizer, learningRate)
 
-    accTestEnd = evalTest(testloader, net, gpu = gpu)
-    if accTest != accTestEnd:
-        print "Something wrong. Original model has been modified!"
-        exit(1)
+    if validation:
+        accTestEnd = evalTest(testloader, net, gpu = gpu)
+        if accTest != accTestEnd:
+            print "Something wrong. Original model has been modified!"
+            exit(1)
 
     if not os.path.exists(save_decoder_dir):
         os.makedirs(save_decoder_dir)
@@ -167,7 +170,7 @@ def trainDecoderDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNDecoder', NEpochs 
 def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeight = 32,
         imageSize = 32*32, NChannels = 3, NClasses = 10, layer = 'conv11',
         model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth", decoder_name = "CIFAR10CNNDecoderconv11.pth",
-        save_img_dir = "inverted_blackbox_decoder/CIFAR10/", gpu = True):
+        save_img_dir = "inverted_blackbox_decoder/CIFAR10/", gpu = True, validation=False):
 
     print "DATASET: ", DATASET
     print "inverseClass: ", inverseClass
@@ -226,7 +229,9 @@ def inverse(DATASET = 'CIFAR10', imageWidth = 32, inverseClass = None, imageHeig
         net = net.cpu()
     net.eval()
     print "Validate the model accuracy..."
-    accTest = evalTest(testloader, net, gpu = gpu)
+
+    if validation:
+        accTest = evalTest(testloader, net, gpu = gpu)
 
     decoderNet = torch.load(model_dir + decoder_name)
     if not gpu:
@@ -305,6 +310,9 @@ if __name__ == '__main__':
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
+
+        parser.add_argument('--novalidation', dest='validation', action='store_false')
+        parser.set_defaults(validation=True)
         args = parser.parse_args()
 
         model_dir = "checkpoints/" + args.dataset + '/'
@@ -329,14 +337,14 @@ if __name__ == '__main__':
             trainDecoderDNN(DATASET = args.dataset, network = 'CIFAR10CNNDecoder', NEpochs = args.iters, imageWidth = imageWidth,
             imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer, BatchSize = args.batch_size, learningRate = args.learning_rate,
             NDecreaseLR = args.decrease_LR, eps = args.eps, AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth", save_decoder_dir = "checkpoints/CIFAR10/",
-            decodername_name = decoder_name, gpu = args.gpu)
+            decodername_name = decoder_name, gpu = args.gpu, validation=args.validation)
 
         else:
             for c in range(NClasses):
                 inverse(DATASET = args.dataset, imageHeight = imageHeight, imageWidth = imageWidth, inverseClass = c,
                 imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
                 model_dir = model_dir, model_name = model_name, decoder_name = decoder_name,
-                save_img_dir = save_img_dir, gpu = args.gpu)
+                save_img_dir = save_img_dir, gpu = args.gpu, validation=args.validation)
 
     except:
         traceback.print_exc(file=sys.stdout)

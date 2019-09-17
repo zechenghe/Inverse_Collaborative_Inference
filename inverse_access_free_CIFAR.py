@@ -29,7 +29,7 @@ from utils import *
 def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', NEpochs = 200, imageWidth = 32,
         imageHeight = 32, imageSize = 32*32, NChannels = 3, NClasses = 10, layer = 'conv', BatchSize = 32, learningRate = 1e-3,
         NDecreaseLR = 5, eps = 1e-3, AMSGrad = True, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth", save_alternative_model_dir = "checkpoints/MNIST/",
-        alternative_model_name = "LeNetAccessFree.pth", gpu = True):
+        alternative_model_name = "LeNetAccessFree.pth", gpu = True, validation=False):
 
     print "DATASET: ", DATASET
 
@@ -81,8 +81,9 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
 
     net.eval()
     print "Validate the model accuracy..."
-    accTest = evalTest(testloader, net, gpu = gpu)
 
+    if validation:
+        accTest = evalTest(testloader, net, gpu = gpu)
 
     altnetDict = {
         'CIFAR10CNNAlternative':{
@@ -172,17 +173,19 @@ def trainAlternativeDNN(DATASET = 'CIFAR10', network = 'CIFAR10CNNAlternative', 
         cloudOuput = net.forward_from(edgeOutput, layer).clone()
         valLoss = CrossEntropyLossLayer(cloudOuput, valLabel)
 
-        accTestSplitModel = evalTestSplitModel(testloader, alternativeNet, net, layer, gpu = gpu)
-        print "Epoch ", epoch, "Train Loss: ", lossTrain, "Test Loss: ", valLoss.cpu().detach().numpy(), "Test Accuracy", accTestSplitModel
+        if validation:
+            accTestSplitModel = evalTestSplitModel(testloader, alternativeNet, net, layer, gpu = gpu)
+            print "Epoch ", epoch, "Train Loss: ", lossTrain, "Test Loss: ", valLoss.cpu().detach().numpy(), "Test Accuracy", accTestSplitModel
 
         if (epoch + 1) % NDecreaseLR == 0:
             learningRate = learningRate / 2.0
             setLearningRate(optimizer, learningRate)
 
-    accTestEnd = evalTest(testloader, net, gpu = gpu)
-    if accTest != accTestEnd:
-        print "Something wrong. Original model has been modified!"
-        exit(1)
+    if validation:
+        accTestEnd = evalTest(testloader, net, gpu = gpu)
+        if accTest != accTestEnd:
+            print "Something wrong. Original model has been modified!"
+            exit(1)
 
     if not os.path.exists(save_alternative_model_dir):
         os.makedirs(save_alternative_model_dir)
@@ -199,7 +202,7 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
         learningRate = 1e-3, NDecreaseLR = 20, eps = 1e-3, lambda_TV = 1e3, lambda_l2 = 1.0,
         AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth",
         alternative_model_name = "CIFAR10CNNAccessFree.pth", save_img_dir = "inverted_access_free/CIFAR10/MSE_TV/",
-        saveIter = 10, gpu = True):
+        saveIter = 10, gpu = True, validation=False):
 
     print "DATASET: ", DATASET
     print "inverseClass: ", inverseClass
@@ -259,14 +262,16 @@ def inverse(DATASET = 'CIFAR10', NIters = 500, imageWidth = 32, inverseClass = N
         net = net.cpu()
     net.eval()
     print "Validate the model accuracy..."
-    accTest = evalTest(testloader, net, gpu = gpu)
+
+    if validation:
+        accTest = evalTest(testloader, net, gpu = gpu)
 
     alternativeNet = torch.load(model_dir + alternative_model_name)
     if not gpu:
         alternativeNet = alternativeNet.cpu()
     alternativeNet.eval()
     print alternativeNet
-    print "Validate the alternative model..."
+    #print "Validate the alternative model..."
     batchX, batchY = iter(testloader).next()
     if gpu:
         batchX = batchX.cuda()
@@ -362,6 +367,8 @@ if __name__ == '__main__':
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
 
+        parser.add_argument('--novalidation', dest='validation', action='store_false')
+        parser.set_defaults(validation=True)
         args = parser.parse_args()
 
         model_dir = "checkpoints/" + args.dataset + '/'
@@ -386,7 +393,7 @@ if __name__ == '__main__':
             trainAlternativeDNN(DATASET = args.dataset, network = 'CIFAR10CNNAlternative', NEpochs = args.iters, imageWidth = imageWidth,
             imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer, BatchSize = args.batch_size, learningRate = args.learning_rate,
             NDecreaseLR = args.decrease_LR, eps = args.eps, AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth", save_alternative_model_dir = "checkpoints/CIFAR10/",
-            alternative_model_name = alternative_model_name, gpu = args.gpu)
+            alternative_model_name = alternative_model_name, gpu = args.gpu, validation=args.validation)
 
         else:
             for c in range(NClasses):
@@ -394,7 +401,7 @@ if __name__ == '__main__':
                 imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
                 learningRate = args.learning_rate, NDecreaseLR = args.decrease_LR, eps = args.eps, lambda_TV = args.lambda_TV, lambda_l2 = args.lambda_l2,
                 AMSGrad = args.AMSGrad, model_dir = model_dir, model_name = model_name, alternative_model_name = alternative_model_name,
-                save_img_dir = save_img_dir, saveIter = args.save_iter, gpu = args.gpu)
+                save_img_dir = save_img_dir, saveIter = args.save_iter, gpu = args.gpu, validation=args.validation)
 
     except:
         traceback.print_exc(file=sys.stdout)

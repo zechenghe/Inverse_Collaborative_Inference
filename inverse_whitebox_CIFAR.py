@@ -43,7 +43,7 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
         imageHeight = 32, imageSize = 32*32, NChannels = 3, NClasses = 10, layer = 'conv22',
         BatchSize = 32, learningRate = 1e-3, NDecreaseLR = 20, eps = 1e-3, lambda_TV = 1e3, lambda_l2 = 1.0,
         AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth",
-        save_img_dir = "inverted/CIFAR10/MSE_TV/", saveIter = 10, gpu = True):
+        save_img_dir = "inverted/CIFAR10/MSE_TV/", saveIter = 10, gpu = True, validation=False):
 
     print "DATASET: ", DATASET
     print "inverseClass: ", inverseClass
@@ -101,7 +101,8 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
 
     net.eval()
     print "Validate the model accuracy..."
-    accTest = evalTest(testloader, net, gpu = gpu)
+    if validation:
+        accTest = evalTest(testloader, net, gpu = gpu)
 
     targetImg, _ = getImgByClass(inverseIter, C = inverseClass)
     print "targetImg.size()", targetImg.size()
@@ -195,6 +196,9 @@ if __name__ == '__main__':
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
+
+        parser.add_argument('--novalidation', dest='validation', action='store_false')
+        parser.set_defaults(validation=True)
         args = parser.parse_args()
 
         model_dir = "checkpoints/" + args.dataset + '/'
@@ -227,7 +231,7 @@ if __name__ == '__main__':
             imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
             BatchSize = args.batch_size, learningRate = args.learning_rate, NDecreaseLR = args.decrease_LR, eps = args.eps, lambda_TV = args.lambda_TV, lambda_l2 = args.lambda_l2,
             AMSGrad = args.AMSGrad, model_dir = model_dir, model_name = model_name, save_img_dir = save_img_dir, saveIter = args.save_iter,
-            gpu = args.gpu)
+            gpu = args.gpu, validation=args.validation)
 
     except:
         traceback.print_exc(file=sys.stdout)
