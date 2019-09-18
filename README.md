@@ -32,13 +32,13 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 #### Inference inverse network
     python inverse_blackbox_decoder_CIFAR.py --testing --decodername CIFAR10CNNDecoderReLU22 --layer ReLU22
 
-#### (4) Access-free Attack (Section 6)
+#### (4) Query-free Attack (Section 6)
 
 #### Train a shadow model
-    python inverse_access_free_CIFAR.py --training --layer ReLU22 --iter 50
+    python inverse_query_free_CIFAR.py --training --layer ReLU22 --iter 50
 
 #### Inverse the shadow model
-    python inverse_access_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 2e0 --lambda_l2 0.0
+    python inverse_query_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 2e0 --lambda_l2 0.0
 
 <br/>
 
