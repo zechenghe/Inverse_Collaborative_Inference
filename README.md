@@ -59,9 +59,10 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 You are encouraged to cite the following paper.
 ```
 @inproceedings{he2019model,
-  title={Model Inversion Attacks Against Collaborative Inference},
+  title={Model inversion attacks against collaborative inference},
   author={He, Zecheng and Zhang, Tianwei and Lee, Ruby B},
   booktitle={Proceedings of the 35th Annual Computer Security Applications Conference},
+  pages={148--162},
   year={2019},
   organization={ACM}
 }
