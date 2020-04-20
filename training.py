@@ -92,8 +92,8 @@ def train(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NEpochs = 200, imageWidth
     print net
     print "len(trainset) ", len(trainset)
     print "len(testset) ", len(testset)
-    x_train, y_train = trainset.train_data, trainset.train_labels,
-    x_test, y_test = testset.test_data, testset.test_labels,
+    x_train, y_train = trainset.data, trainset.targets,
+    x_test, y_test = testset.data, testset.targets,
 
     print "x_train.shape ", x_train.shape
     print "x_test.shape ", x_test.shape
