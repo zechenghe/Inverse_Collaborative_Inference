@@ -263,7 +263,7 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             elif noise_type == 'Laplace':
                 noise = np.random.laplace(
                     loc= mean,
-                    scale = noise_level,
+                    scale = std,
                     shape = edgeOutput.size()
                 )
                 noise = torch.tensor(noise)
