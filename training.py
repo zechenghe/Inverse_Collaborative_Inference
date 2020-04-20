@@ -28,24 +28,24 @@ def train(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NEpochs = 200, imageWidth
 
     if DATASET == 'MNIST':
 
-        mu = torch.tensor([0.5, 0.5, 0.5], dtype=torch.float32)
-        sigma = torch.tensor([0.5, 0.5, 0.5], dtype=torch.float32)
+        mu = torch.tensor([0.5], dtype=torch.float32)
+        sigma = torch.tensor([0.5, dtype=torch.float32)
         Normalize = transforms.Normalize(mu.tolist(), sigma.tolist())
         Unnormalize = transforms.Normalize((-mu / sigma).tolist(), (1.0 / sigma).tolist())
 
         tsf = {
             'train': transforms.Compose(
             [
-            transforms.ToTensor(),
-            Normalize
+                transforms.ToTensor(),
+                Normalize
             ]),
 
             'test': transforms.Compose(
             [
-            transforms.ToTensor(),
-            Normalize
+                transforms.ToTensor(),
+                Normalize
             ])
-            }
+        }
 
         trainset = torchvision.datasets.MNIST(root='./data/MNIST', train=True,
                                         download=True, transform = tsf['train'])
