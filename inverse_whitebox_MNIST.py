@@ -182,7 +182,7 @@ if __name__ == '__main__':
         parser.add_argument('--batch_size', type = int, default = 32)
         parser.add_argument('--learning_rate', type = float, default = 1e-2)
         parser.add_argument('--decrease_LR', type = int, default = 20)
-        parser.add_argument('--layer', type = str, default = 'conv2')
+        parser.add_argument('--layer', type = str, default = 'ReLU2')
         parser.add_argument('--save_iter', type = int, default = 10)
         parser.add_argument('--inverseClass', type = int, default = None)
 
