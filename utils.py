@@ -266,7 +266,7 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
                     scale = noise_level,
                     size = edgeOutput.size()
                 )
-                noise = torch.tensor(noise)
+                noise = torch.tensor(noise, dtype = torch.float)
             else:
                 print "Unsupported Noise Type: ", noise_type
                 exit(1)
