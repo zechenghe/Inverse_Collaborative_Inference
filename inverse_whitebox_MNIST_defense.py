@@ -226,6 +226,7 @@ if __name__ == '__main__':
         parser.add_argument('--layer', type = str, default = 'ReLU2')
         parser.add_argument('--save_iter', type = int, default = 10)
         parser.add_argument('--inverseClass', type = int, default = None)
+        parser.add_argument('--noise_type', type = str, default = None)
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
@@ -251,7 +252,7 @@ if __name__ == '__main__':
             print "No Dataset Found"
             exit()
 
-        noise_type = 'Gaussian'
+        noise_type = args.noise_type
         for noise_level in np.arange(0, 1, 0.01):
             eval_DP_defense(args, noise_type, noise_level)
 
