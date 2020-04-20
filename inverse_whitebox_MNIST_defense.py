@@ -254,7 +254,7 @@ if __name__ == '__main__':
             exit()
 
         noise_type = 'Gaussian'
-        for noise_level in range(0, 5, 0.1):
+        for noise_level in np.arange(0, 5, 0.1):
             eval_DP_defense(args, noise_type, noise_level)
 
             #for c in range(NClasses):
