@@ -4,4 +4,4 @@ data/
 checkpoints/
 inverted_access_free/
 inverted_blackbox_decoder/
-inverted_whitebox/
+inverted_whitebox/CIFAR10
