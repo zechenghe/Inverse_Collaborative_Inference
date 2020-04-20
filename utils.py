@@ -240,7 +240,7 @@ def saveImage(img, filepath):
     torchvision.utils.save_image(img, filepath)
 
 
-def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, mean = 0.0, std = 0.0):
+def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, mean = 0.0, noise_level = 0.0):
     testIter = iter(testloader)
     acc = 0.0
     NBatch = 0
@@ -263,8 +263,8 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             elif noise_type == 'Laplace':
                 noise = np.random.laplace(
                     loc= mean,
-                    scale = std,
-                    shape = edgeOutput.size()
+                    scale = noise_level,
+                    size = edgeOutput.size()
                 )
                 noise = torch.tensor(noise)
             else:

@@ -67,7 +67,7 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
     acc = evalTestSplitModel(testloader, net, net, layer=args.layer, gpu = args.gpu,
             noise_type = noise_type,
             mean = 0.0,
-            std = noise_level
+            noise_level = noise_level
         )
     print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc
 
