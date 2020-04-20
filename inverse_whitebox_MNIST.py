@@ -19,24 +19,15 @@ from utils import *
 #####################
 # Useful Hyperparameters:
 
-# CIFAR conv11
-# python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer conv11 --lambda_TV 0.0 --lambda_l2 0.0
+# A good parameter set to invert MNIST ReLU2 layer
+# python inverse.py --dataset MNIST --iters 5000 --learning_rate 1e-2 --layer ReLU2 --lambda_TV 1e0 --lambda_l2 0.0
 
-# CIFAR ReLU22
-# python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer ReLU22 --lambda_TV 1e1 --lambda_l2 0.0
+# A good parameter set to invert MNIST fc3 layer
+# python inverse.py --dataset MNIST --iters 5000 --learning_rate 1e-2 --layer fc3 --lambda_TV 1e3 --lambda_l2 0.0
+#
+# A good parameter set to invert MNIST label only
+# python inverse.py --dataset MNIST --iters 5000 --learning_rate 1e-2 --layer prob --lambda_TV 1e-1 --lambda_l2 0.0
 
-# CIFAR ReLU32
-# python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-2 --layer ReLU32 --lambda_TV 1e3 --lambda_l2 0.0
-
-# CIFAR fc1
-# python inverse_whitebox_CIFAR.py --iters 5000 --learning_rate 1e-3 --layer fc1 --lambda_TV 1e4 --lambda_l2 0.0
-# python inverse_whitebox_CIFAR.py --iters 1000 --learning_rate 5e-2 --layer fc1 --lambda_TV 1e5 --lambda_l2 0.0
-
-# CIFAR fc2
-# python inverse_whitebox_CIFAR.py --iters 500 --learning_rate 1e-1 --layer fc2 --lambda_TV 5e2 --lambda_l2 1e2
-
-# CIFAR label
-# python inverse_whitebox_CIFAR.py --iters 500 --learning_rate 5e-2 --layer label --lambda_TV 5e-1 --lambda_l2 0.0
 #####################
 
 def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28, inverseClass = None,
@@ -186,10 +177,10 @@ if __name__ == '__main__':
         parser.add_argument('--iters', type = int, default = 500)
         parser.add_argument('--eps', type = float, default = 1e-3)
         parser.add_argument('--lambda_TV', type = float, default = 1.0)
-        parser.add_argument('--lambda_l2', type = float, default = 1.0)
+        parser.add_argument('--lambda_l2', type = float, default = 0.0)
         parser.add_argument('--AMSGrad', type = bool, default = True)
         parser.add_argument('--batch_size', type = int, default = 32)
-        parser.add_argument('--learning_rate', type = float, default = 1e-3)
+        parser.add_argument('--learning_rate', type = float, default = 1e-2)
         parser.add_argument('--decrease_LR', type = int, default = 20)
         parser.add_argument('--layer', type = str, default = 'conv2')
         parser.add_argument('--save_iter', type = int, default = 10)
