@@ -49,11 +49,10 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
         testset = torchvision.datasets.MNIST(root='./data/MNIST', train=False,
                                        download=True, transform = tsf['test'])
 
-    print "len(testset) ", len(testset)
+    #print "len(testset) ", len(testset)
     x_test, y_test = testset.data, testset.targets,
 
-    print "x_test.shape ", x_test.shape
-
+    #print "x_test.shape ", x_test.shape
     testloader = torch.utils.data.DataLoader(testset, batch_size = 1000,
                                       shuffle = False, num_workers = 1)
     testIter = iter(testloader)
@@ -63,9 +62,7 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
         net = net.cpu()
 
     net.eval()
-    print "Validate the model accuracy..."
-    if args.validation:
-        accTest = evalTest(testloader, net, gpu = args.gpu)
+    #print "Validate the model accuracy..."
 
     acc = evalTestSplitModel(testloader, net, net, layer=args.layer, gpu = args.gpu,
             noise_type = noise_type,

@@ -266,9 +266,10 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             else:
                 print "Unsupported Noise Type: ", noise_type
                 exit(1)
-                
+
             if gpu:
                 noise = noise.cuda()
+            print edgeOutput
             edgeOutput = edgeOutput + noise
 
         #cloudOuput = net.forward(batchX)
