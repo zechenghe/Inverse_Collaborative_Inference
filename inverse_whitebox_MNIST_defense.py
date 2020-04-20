@@ -71,7 +71,7 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
         accTest = evalTest(testloader, net, gpu = gpu)
 
     acc = evalTestSplitModel(testloader, net, net, layer=args.layer, gpu = args.gpu)
-    print "Noise_type: " noise_type, "Noise_level: ", noise_level, "Acc: ", acc
+    print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc
 
 def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28, inverseClass = None,
         imageHeight = 28, imageSize = 28*28, NChannels = 1, NClasses = 10, layer = 'conv2',
