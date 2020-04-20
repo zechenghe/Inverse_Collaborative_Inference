@@ -49,12 +49,9 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
         testset = torchvision.datasets.MNIST(root='./data/MNIST', train=False,
                                        download=True, transform = tsf['test'])
 
-    print "len(trainset) ", len(trainset)
     print "len(testset) ", len(testset)
-    x_train, y_train = trainset.data, trainset.targets,
     x_test, y_test = testset.data, testset.targets,
 
-    print "x_train.shape ", x_train.shape
     print "x_test.shape ", x_test.shape
 
     testloader = torch.utils.data.DataLoader(testset, batch_size = 1000,
@@ -62,15 +59,19 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
     testIter = iter(testloader)
 
     net = torch.load(model_dir + model_name)
-    if not gpu:
+    if not args.gpu:
         net = net.cpu()
 
     net.eval()
     print "Validate the model accuracy..."
     if args.validation:
-        accTest = evalTest(testloader, net, gpu = gpu)
+        accTest = evalTest(testloader, net, gpu = args.gpu)
 
-    acc = evalTestSplitModel(testloader, net, net, layer=args.layer, gpu = args.gpu)
+    acc = evalTestSplitModel(testloader, net, net, layer=args.layer, gpu = args.gpu,
+            noise_type = noise_type,
+            mean = 0.0,
+            std = noise_level
+        )
     print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc
 
 def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28, inverseClass = None,
