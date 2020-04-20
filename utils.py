@@ -262,10 +262,13 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
                 noise = torch.randn(edgeOutput.size()) * std + mean
             elif noise_type == 'Laplace':
                 noise = np.random.laplace(edgeOutput.size())
-                noise = torch.tensor(noise).cuda()
+                noise = torch.tensor(noise)
             else:
                 print "Unsupported Noise Type: ", noise_type
                 exit(1)
+                
+            if gpu:
+                noise = noise.cuda()
             edgeOutput = edgeOutput + noise
 
         #cloudOuput = net.forward(batchX)
