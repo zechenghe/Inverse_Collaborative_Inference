@@ -1,6 +1,6 @@
 # Model Inversion Attack against Collaborative Inference
 
-This code implements model inversion attacks against collaborative inference in the following paper:
+This code implements model inversion attacks against collaborative inference in the following [paper](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf):
 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019
 
@@ -59,9 +59,10 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 You are encouraged to cite the following paper.
 ```
 @inproceedings{he2019model,
-  title={Model Inversion Attacks Against Collaborative Inference},
+  title={Model inversion attacks against collaborative inference},
   author={He, Zecheng and Zhang, Tianwei and Lee, Ruby B},
   booktitle={Proceedings of the 35th Annual Computer Security Applications Conference},
+  pages={148--162},
   year={2019},
   organization={ACM}
 }
