@@ -77,7 +77,6 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         testset = torchvision.datasets.MNIST(root='./data/MNIST', train=False,
                                        download=True, transform = tsf['test'])
 
-
     print "len(trainset) ", len(trainset)
     print "len(testset) ", len(testset)
     x_train, y_train = trainset.data, trainset.targets,
