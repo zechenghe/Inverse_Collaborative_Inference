@@ -240,7 +240,7 @@ def saveImage(img, filepath):
     torchvision.utils.save_image(img, filepath)
 
 
-def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu):
+def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, mean = 0.0, std = 0.0):
     testIter = iter(testloader)
     acc = 0.0
     NBatch = 0
@@ -256,6 +256,17 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu):
             #print "Except in evalTestSplitModel getLayerOutput, this is a Edge-only model"
             #print str(e)
             edgeOutput = netEdge.forward(batchX).clone()
+
+        if noise_type != None:
+            if noise_type == 'Gaussian':
+                noise = torch.randn(edgeOutput.size()) * std + mean
+            elif noise_type == 'Laplace':
+                noise = np.random.laplace(edgeOutput.size())
+                noise = torch.tensor(noise).cuda()
+            else:
+                print "Unsupported Noise Type: ", noise_type
+                exit(1)
+            edgeOutput = edgeOutput + noise
 
         #cloudOuput = net.forward(batchX)
         logits = netCloud.forward_from(edgeOutput, layer)
