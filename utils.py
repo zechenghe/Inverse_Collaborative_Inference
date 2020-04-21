@@ -259,7 +259,7 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
     elif noise_type == 'dropout':
         mask = np.random.choice([0.0, 1.0], size=input.size(), replace=True, p=[noise_level, 1-noise_level])
         mask = torch.tensor(mask, dtype = torch.float)
-        mask = noise.cuda() if gpu else mask
+        mask = mask.cuda() if gpu else mask
         output = input * mask
     else:
         print "Unsupported Noise Type: ", noise_type
