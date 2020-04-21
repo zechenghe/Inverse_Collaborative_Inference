@@ -257,7 +257,7 @@ if __name__ == '__main__':
         acc_hist = []
         psnr_hist = []
         ssim_hist = []
-        for noise_level in np.arange(0, 1, 0.01):
+        for noise_level in np.arange(0, 1, 0.1):
             noise_hist.append(noise_level)
 
             save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised/' + noise_type + '/' + str(noise_level) + '/'
