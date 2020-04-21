@@ -271,7 +271,9 @@ if __name__ == '__main__':
         noise_type = args.noise_type
         noise_hist = []
         acc_hist = []
-        for noise_level in np.arange(0, 1, 0.01):
+        psnr_hist = []
+        ssim_hist = []
+        for noise_level in np.arange(0.9, 1, 0.01):
             noise_hist.append(noise_level)
 
             save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised/' + noise_type + '/' + str(noise_level) + '/'
@@ -281,6 +283,8 @@ if __name__ == '__main__':
             acc = eval_DP_defense(args, noise_type, noise_level)
             acc_hist.append(acc)
 
+            psnr_sum = 0.0
+            ssim_sum = 0.0
             for c in range(NClasses):
                 psnr, ssim = inverse(DATASET = args.dataset, network = args.network, NIters = args.iters, imageWidth = imageWidth, inverseClass = c,
                 imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
@@ -288,7 +292,12 @@ if __name__ == '__main__':
                 AMSGrad = args.AMSGrad, model_dir = model_dir, model_name = model_name, save_img_dir = save_img_dir, saveIter = args.save_iter,
                 gpu = args.gpu, validation=args.validation, noise_type = noise_type, noise_level = noise_level)
 
-                print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc, "PSNR: ", psnr, "SSIM", ssim
+                psnr_sum += psnr / NClasses
+                ssim_sum += ssim / NClasses
+
+            psnr_hist.append(psnr_sum)
+            ssim_hist.append(ssim_sum)
+            print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc, "PSNR: ", psnr_sum, "SSIM", ssim_sum
 
     except:
         traceback.print_exc(file=sys.stdout)
