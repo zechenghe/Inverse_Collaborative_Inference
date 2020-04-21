@@ -205,8 +205,10 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
     imgGen = deprocess(imgGen)
     torchvision.utils.save_image(imgGen, save_img_dir + str(inverseClass) + '-inv.png')
 
-    psnr = get_PSNR(deprocessImg, imgGen, peak=1.0)
-    ssim = img_ssim = ssim(deprocessImg, imgGen, data_range = imgGen.max() - imgGen.min(), multichannel=False)
+    ref_img = deprocessImg.detach().cpu().numpy()
+    inv_img = imgGen.detach().cpu().numpy()
+    psnr = get_PSNR(ref_img, inv_img, peak=1.0)
+    ssim = ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
 
     #print "targetImg l1 Stat:"
     #getL1Stat(net, targetImg)
