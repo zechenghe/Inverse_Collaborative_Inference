@@ -77,7 +77,8 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         imageHeight = 28, imageSize = 28*28, NChannels = 1, NClasses = 10, layer = 'conv2',
         BatchSize = 32, learningRate = 1e-3, NDecreaseLR = 20, eps = 1e-3, lambda_TV = 1e3, lambda_l2 = 1.0,
         AMSGrad = True, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth",
-        save_img_dir = "inverted/MNIST/MSE_TV/", saveIter = 10, gpu = True, validation=False):
+        save_img_dir = "inverted/MNIST/MSE_TV/", saveIter = 10, gpu = True, validation=False,
+        noise_type = None, noise_level = 0.0):
 
     assert inverseClass < NClasses
 
@@ -147,6 +148,25 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
     else:
         targetLayer = net.layerDict[layer]
         refFeature = net.getLayerOutput(targetImg, targetLayer)
+
+    # Apply noise
+    if noise_type != None:
+        if noise_type == 'Gaussian':
+            noise = torch.randn(refFeature.size()) * std + mean
+        elif noise_type == 'Laplace':
+            noise = np.random.laplace(
+                loc= 0.0,
+                scale = noise_level,
+                size = refFeature.size()
+            )
+            noise = torch.tensor(noise, dtype = torch.float)
+        else:
+            print "Unsupported Noise Type: ", noise_type
+            exit(1)
+        if gpu:
+            noise = noise.cuda()
+
+        refFeature = refFeature + noise
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")
