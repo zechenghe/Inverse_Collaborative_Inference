@@ -259,7 +259,7 @@ if __name__ == '__main__':
         psnr_hist = []
         ssim_hist = []
 
-        noise_range = [noise_level] if noise_level != None else np.arange(0, 1, 0.1)
+        noise_range = [args.noise_level] if args.noise_level != None else np.arange(0, 1, 0.1)
         for noise_level in noise_range:
             noise_hist.append(noise_level)
 
