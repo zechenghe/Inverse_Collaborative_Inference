@@ -229,6 +229,7 @@ if __name__ == '__main__':
         parser.add_argument('--save_iter', type = int, default = 10)
         parser.add_argument('--inverseClass', type = int, default = None)
         parser.add_argument('--noise_type', type = str, default = None)
+        parser.add_argument('--noise_level', type = str, default = None)
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
@@ -257,7 +258,9 @@ if __name__ == '__main__':
         acc_hist = []
         psnr_hist = []
         ssim_hist = []
-        for noise_level in np.arange(0, 1, 0.1):
+
+        noise_range = [noise_level] if noise_level != None else np.arange(0, 1, 0.1)
+        for noise_level in noise_range:
             noise_hist.append(noise_level)
 
             save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised/' + noise_type + '/' + str(noise_level) + '/'
