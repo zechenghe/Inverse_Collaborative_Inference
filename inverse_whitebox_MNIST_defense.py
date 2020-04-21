@@ -16,6 +16,8 @@ import torch.backends.cudnn as cudnn
 from net import *
 from utils import *
 
+from skimage.measure import compare_ssim as ssim
+
 #####################
 # Useful Hyperparameters:
 
@@ -69,16 +71,13 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
             mean = 0.0,
             noise_level = noise_level
         )
-    print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc
+    return acc
 
 def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28, inverseClass = None,
         imageHeight = 28, imageSize = 28*28, NChannels = 1, NClasses = 10, layer = 'conv2',
         BatchSize = 32, learningRate = 1e-3, NDecreaseLR = 20, eps = 1e-3, lambda_TV = 1e3, lambda_l2 = 1.0,
         AMSGrad = True, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth",
         save_img_dir = "inverted/MNIST/MSE_TV/", saveIter = 10, gpu = True, validation=False):
-
-    print "DATASET: ", DATASET
-    print "inverseClass: ", inverseClass
 
     assert inverseClass < NClasses
 
@@ -109,14 +108,8 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         testset = torchvision.datasets.MNIST(root='./data/MNIST', train=False,
                                        download=True, transform = tsf['test'])
 
-    print "len(trainset) ", len(trainset)
-    print "len(testset) ", len(testset)
     x_train, y_train = trainset.data, trainset.targets,
     x_test, y_test = testset.data, testset.targets,
-
-    print "x_train.shape ", x_train.shape
-    print "x_test.shape ", x_test.shape
-
 
     trainloader = torch.utils.data.DataLoader(trainset, batch_size = 1,
                                       shuffle = False, num_workers = 1)
@@ -133,13 +126,8 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         net = net.cpu()
 
     net.eval()
-    print "Validate the model accuracy..."
-    if validation:
-        accTest = evalTest(testloader, net, gpu = gpu)
 
     targetImg, _ = getImgByClass(inverseIter, C = inverseClass)
-    print "targetImg.size()", targetImg.size()
-
     deprocessImg = deprocess(targetImg.clone())
 
     if not os.path.exists(save_img_dir):
@@ -159,8 +147,6 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
     else:
         targetLayer = net.layerDict[layer]
         refFeature = net.getLayerOutput(targetImg, targetLayer)
-
-    print "refFeature.size()", refFeature.size()
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")
@@ -192,18 +178,23 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         totalLoss.backward(retain_graph=True)
         optimizer.step()
 
-        print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
+        #print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
 
     # save the final result
     imgGen = xGen.clone()
     imgGen = deprocess(imgGen)
     torchvision.utils.save_image(imgGen, save_img_dir + str(inverseClass) + '-inv.png')
 
-    print "targetImg l1 Stat:"
-    getL1Stat(net, targetImg)
-    print "xGen l1 Stat:"
-    getL1Stat(net, xGen)
-    print "Done"
+    psnr = get_PSNR(deprocessImg, imgGen, peak=1.0)
+    ssim = img_ssim = ssim(deprocessImg, imgGen, data_range = imgGen.max() - imgGen.min(), multichannel=False)
+
+    #print "targetImg l1 Stat:"
+    #getL1Stat(net, targetImg)
+    #print "xGen l1 Stat:"
+    #getL1Stat(net, xGen)
+    #print "Done"
+
+    return psnr, ssim
 
 
 if __name__ == '__main__':
@@ -238,8 +229,6 @@ if __name__ == '__main__':
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
 
-        save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/'
-
         if args.dataset == 'MNIST':
 
             imageWidth = 28
@@ -253,15 +242,26 @@ if __name__ == '__main__':
             exit()
 
         noise_type = args.noise_type
+        noise_hist = []
+        acc_hist = []
         for noise_level in np.arange(0, 1, 0.01):
-            eval_DP_defense(args, noise_type, noise_level)
+            noise_hist.append(noise_level)
 
-            #for c in range(NClasses):
-            #    inverse(DATASET = args.dataset, network = args.network, NIters = args.iters, imageWidth = imageWidth, inverseClass = c,
-            #    imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
-            #    BatchSize = args.batch_size, learningRate = args.learning_rate, NDecreaseLR = args.decrease_LR, eps = args.eps, lambda_TV = args.lambda_TV, lambda_l2 = args.lambda_l2,
-            #    AMSGrad = args.AMSGrad, model_dir = model_dir, model_name = model_name, save_img_dir = save_img_dir, saveIter = args.save_iter,
-            #    gpu = args.gpu, validation=args.validation, noise_type = noise_type, noise_level = noise_level)
+            save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised/' + noise_type + '/' + str(noise_level) + '/'
+            if not os.path.exists(save_img_dir):
+                os.makedirs(save_img_dir)
+
+            acc = eval_DP_defense(args, noise_type, noise_level)
+            acc_hist.append(acc)
+
+            for c in range(NClasses):
+                psnr, ssim = inverse(DATASET = args.dataset, network = args.network, NIters = args.iters, imageWidth = imageWidth, inverseClass = c,
+                imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
+                BatchSize = args.batch_size, learningRate = args.learning_rate, NDecreaseLR = args.decrease_LR, eps = args.eps, lambda_TV = args.lambda_TV, lambda_l2 = args.lambda_l2,
+                AMSGrad = args.AMSGrad, model_dir = model_dir, model_name = model_name, save_img_dir = save_img_dir, saveIter = args.save_iter,
+                gpu = args.gpu, validation=args.validation, noise_type = noise_type, noise_level = noise_level)
+
+                print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc, "PSNR: ", psnr, "SSIM", ssim
 
     except:
         traceback.print_exc(file=sys.stdout)
