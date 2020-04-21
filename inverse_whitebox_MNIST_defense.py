@@ -207,6 +207,11 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
 
     ref_img = deprocessImg.detach().cpu().numpy()
     inv_img = imgGen.detach().cpu().numpy()
+
+    print "ref_img.shape", ref_img.shape, "inv_img.shape", inv_img.shape
+    print "ref_img ", ref_img.min(), ref_img.max()
+    print "inv_img ", inv_img.min(), inv_img.max()
+
     psnr = get_PSNR(ref_img, inv_img, peak=1.0)
     ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
 
