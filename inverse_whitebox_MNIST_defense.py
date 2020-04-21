@@ -150,7 +150,7 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
 
     # Apply noise
     if noise_type != None:
-        refFeature = apply_noise(refFeature, noise_type, noise_level, gpu=args.gpu):
+        refFeature = apply_noise(refFeature, noise_type, noise_level, gpu=args.gpu)
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")
