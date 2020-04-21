@@ -16,7 +16,7 @@ import torch.backends.cudnn as cudnn
 from net import *
 from utils import *
 
-from skimage.measure import compare_ssim as ssim
+from skimage.measure import compare_ssim
 
 #####################
 # Useful Hyperparameters:
@@ -208,7 +208,7 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
     ref_img = deprocessImg.detach().cpu().numpy()
     inv_img = imgGen.detach().cpu().numpy()
     psnr = get_PSNR(ref_img, inv_img, peak=1.0)
-    ssim = ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
+    ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
 
     #print "targetImg l1 Stat:"
     #getL1Stat(net, targetImg)
