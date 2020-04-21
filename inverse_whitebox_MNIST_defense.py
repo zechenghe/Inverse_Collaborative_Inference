@@ -68,7 +68,6 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIS
 
     acc = evalTestSplitModel(testloader, net, net, layer=args.layer, gpu = args.gpu,
             noise_type = noise_type,
-            mean = 0.0,
             noise_level = noise_level
         )
     return acc
@@ -151,22 +150,7 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
 
     # Apply noise
     if noise_type != None:
-        if noise_type == 'Gaussian':
-            noise = torch.randn(refFeature.size()) * std + mean
-        elif noise_type == 'Laplace':
-            noise = np.random.laplace(
-                loc= 0.0,
-                scale = noise_level,
-                size = refFeature.size()
-            )
-            noise = torch.tensor(noise, dtype = torch.float)
-        else:
-            print "Unsupported Noise Type: ", noise_type
-            exit(1)
-        if gpu:
-            noise = noise.cuda()
-
-        refFeature = refFeature + noise
+        refFeature = apply_noise(refFeature, noise_type, noise_level, gpu=args.gpu):
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")

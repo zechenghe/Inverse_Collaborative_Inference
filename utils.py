@@ -240,7 +240,30 @@ def saveImage(img, filepath):
     torchvision.utils.save_image(img, filepath)
 
 
-def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, mean = 0.0, noise_level = 0.0):
+def apply_noise(input, noise_type, noise_level, gpu=True):
+
+    if noise_type == 'Gaussian':
+        noise = torch.randn(input.size()) * std + mean
+        noise = noise.cuda() if gpu else noise
+        output = input + noise
+
+    elif noise_type == 'Laplace':
+        noise = np.random.laplace(
+            loc= mean,
+            scale = noise_level,
+            size = input.size()
+        )
+        noise = torch.tensor(noise, dtype = torch.float)
+        noise = noise.cuda() if gpu else noise
+        output = input + noise
+
+    else:
+        print "Unsupported Noise Type: ", noise_type
+        exit(1)
+
+    return output
+
+def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, noise_level = 0.0):
     testIter = iter(testloader)
     acc = 0.0
     NBatch = 0
@@ -258,23 +281,7 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             edgeOutput = netEdge.forward(batchX).clone()
 
         if noise_type != None:
-            if noise_type == 'Gaussian':
-                noise = torch.randn(edgeOutput.size()) * std + mean
-            elif noise_type == 'Laplace':
-                noise = np.random.laplace(
-                    loc= mean,
-                    scale = noise_level,
-                    size = edgeOutput.size()
-                )
-                noise = torch.tensor(noise, dtype = torch.float)
-            else:
-                print "Unsupported Noise Type: ", noise_type
-                exit(1)
-
-            if gpu:
-                noise = noise.cuda()
-
-            edgeOutput = edgeOutput + noise
+            edgeOutput = apply_noise(edgeOutput, noise_type, noise_level, gpu=gpu)
 
         #cloudOuput = net.forward(batchX)
         logits = netCloud.forward_from(edgeOutput, layer)
