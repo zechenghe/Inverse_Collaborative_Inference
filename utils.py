@@ -240,10 +240,10 @@ def saveImage(img, filepath):
     torchvision.utils.save_image(img, filepath)
 
 
-def apply_noise(input, noise_type, noise_level, gpu=True):
+def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
 
     if noise_type == 'Gaussian':
-        noise = torch.randn(input.size()) * std + mean
+        noise = torch.randn(input.size()) * noise_level + mean
         noise = noise.cuda() if gpu else noise
         output = input + noise
 
