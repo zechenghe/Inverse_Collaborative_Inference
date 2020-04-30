@@ -266,11 +266,12 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
     elif noise_type == 'redistribute':
         input_list = input.detach().cpu().numpy().reshape([-1])
         idx = np.argsort(input_list)
-        map = np.linspace(start=min(input_list), stop=max(input_list), num=len(input_list))
+        map = np.linspace(start=0.0, stop=1.0, num=len(input_list))
 
         output = [0]*len(input_list)
         for i in range(len(idx)):
-            output[idx[i]] = map[i]
+            if input_list[idx[i]] != 0:
+                output[idx[i]] = map[i]
         output = torch.tensor(np.array(output).reshape(input.size()), dtype = torch.float)
         output = output.cuda() if gpu else output
 
