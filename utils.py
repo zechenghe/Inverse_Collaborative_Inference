@@ -275,8 +275,8 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         output = torch.tensor(np.array(output).reshape(input.size()), dtype = torch.float)
         output = output.cuda() if gpu else output
 
-        print "input", input
-        print "output", output
+        #print "input", input
+        #print "output", output
 
     elif noise_type == 'impulse':
         noise = np.random.choice([0.0, 1.0], size=input.size(), replace=True, p=[1-noise_level, noise_level])
