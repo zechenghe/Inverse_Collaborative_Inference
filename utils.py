@@ -267,7 +267,7 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         input_list = input.detach().cpu().numpy().reshape([-1])
         output = [0]*len(input_list)
 
-        for i in range(len(idx)):
+        for i in range(len(input_list)):
             if input_list[idx[i]] != 0 and np.random.rand() < noise_level:
                 output[idx[i]] = 0.0
         output = torch.tensor(np.array(output).reshape(input.size()), dtype = torch.float)
