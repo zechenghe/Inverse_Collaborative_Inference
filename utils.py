@@ -263,8 +263,19 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         mask = mask.cuda() if gpu else mask
         output = input * mask
 
+    elif noise_type == 'redistribute':
+        input = input.detach().cpu().numpy().reshape([-1])
+        idx = np.argsort(input)
+        map = np.linspace(start=min(input), stop=max(input), num=len(input))
+
+        output = [0]*len(input)
+        for i in range(len(idx)):
+            output[idx[i]] = map[i]
+
+        output = output.cuda() if gpu else output
+
     elif noise_type == 'impulse':
-        noise = np.random.choice([0.0, 100.0], size=input.size(), replace=True, p=[1-noise_level, noise_level])
+        noise = np.random.choice([0.0, 1.0], size=input.size(), replace=True, p=[1-noise_level, noise_level])
         noise = torch.tensor(noise, dtype = torch.float)
         noise = noise.cuda() if gpu else noise
         output = input + noise
