@@ -268,7 +268,7 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         output = input_list.copy()
 
         for i in range(len(input_list)):
-            if input_list[i] != 0:
+            if input_list[i] > 0:
                 if np.random.rand() < noise_level:
                     output[i] = -1.0
             else:
