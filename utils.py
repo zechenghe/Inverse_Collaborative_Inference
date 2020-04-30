@@ -271,7 +271,7 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         output = [0]*len(input)
         for i in range(len(idx)):
             output[idx[i]] = map[i]
-
+        output = np.array(output)
         output = output.cuda() if gpu else output
 
     elif noise_type == 'impulse':
