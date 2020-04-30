@@ -270,7 +270,7 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
 
         output = [0]*len(input_list)
         for i in range(len(idx)):
-            if input_list[idx[i]] != 0 and np.random().rand() > noise_level:
+            if input_list[idx[i]] != 0 and np.random.rand() > noise_level:
                 output[idx[i]] = 1.0
         output = torch.tensor(np.array(output).reshape(input.size()), dtype = torch.float)
         output = output.cuda() if gpu else output
