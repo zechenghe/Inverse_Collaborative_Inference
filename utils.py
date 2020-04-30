@@ -261,6 +261,9 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         mask = torch.tensor(mask, dtype = torch.float)
         mask = mask.cuda() if gpu else mask
         output = input * mask
+    elif noise_type == 'impluse':
+        noise = np.random.choice([0.0, 1.0], size=input.size(), replace=True, p=[1-noise_level, noise_level])
+        output = input + noise
     else:
         print "Unsupported Noise Type: ", noise_type
         exit(1)
