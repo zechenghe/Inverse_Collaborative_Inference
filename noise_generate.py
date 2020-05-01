@@ -25,15 +25,22 @@ from skimage.measure import compare_ssim
 #####################
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
-    inverseClass = args.inverseClass
-    NClasses = args.NClasses
-    assert inverseClass < NClasses
 
     sourceLayer = args.sourceLayer
     targetLayer = args.targetLayer
     gpu = args.gpu
 
     if DATASET == 'MNIST':
+
+        imageWidth = 28
+        imageHeight = 28
+        imageSize = imageWidth * imageHeight
+        NChannels = 1
+        NClasses = 10
+
+        inverseClass = args.inverseClass
+        NClasses = args.NClasses
+        assert inverseClass < NClasses
 
         mu = torch.tensor([0.5], dtype=torch.float32)
         sigma = torch.tensor([0.5], dtype=torch.float32)
@@ -192,18 +199,6 @@ if __name__ == '__main__':
 
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
-
-        if args.dataset == 'MNIST':
-
-            imageWidth = 28
-            imageHeight = 28
-            imageSize = imageWidth * imageHeight
-            NChannels = 1
-            NClasses = 10
-
-        else:
-            print "No Dataset Found"
-            exit()
 
         noise_gen(
             args = args,
