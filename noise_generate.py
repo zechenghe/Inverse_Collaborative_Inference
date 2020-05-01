@@ -30,7 +30,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     targetLayer = args.targetLayer
     gpu = args.gpu
 
-    if DATASET == 'MNIST':
+    if args.dataset == 'MNIST':
 
         imageWidth = 28
         imageHeight = 28
