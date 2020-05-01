@@ -111,33 +111,32 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
     print "targetLayerOutput.size", targetLayerOutput.size()
 
-    exit(0)
-
-
     optimizer = optim.Adam(params = [xGen], lr = learningRate, eps = eps, amsgrad = AMSGrad)
 
     for i in range(NIters):
 
         optimizer.zero_grad()
-        if layer == 'prob':
-            xlogits = net.forward(xGen)
-            xFeature = softmaxLayer(xlogits)
-            featureLoss = ((xFeature - refFeature)**2).mean()
-        elif layer == 'label':
-            xlogits = net.forward(xGen)
-            xFeature = softmaxLayer(xlogits)
-            featureLoss = - torch.log(xFeature[0, inverseClass])
-        else:
-            xFeature = net.getLayerOutput(xGen, targetLayer)
-            featureLoss = ((xFeature - refFeature)**2).mean()
 
-        TVLoss = TV(xGen)
-        normLoss = l2loss(xGen)
+        targetLayerOutput = net.getLayerOutputFrom(
+            x = xGen,
+            sourceLayer = sourceLayer,
+            targetLayer = targetLayer
+        )
 
-        totalLoss = featureLoss + lambda_TV * TVLoss + lambda_l2 * normLoss #- 1.0 * conv1Loss
+        sourceLayerLoss = ((xGen - refSource)**2).mean()
+        targetLayerLoss = ((targetLayerOutput - refTarget)**2).mean()
+
+        totalLoss = targetLayerLoss + sourceLayerLoss * args.lambda_sourcelayer
 
         totalLoss.backward(retain_graph=True)
         optimizer.step()
+
+        print "Iter ", i, "loss: ", totalLoss.cpu().detach().numpy(), \
+        "sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
+        "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
+
+
+    exit(0)
 
         #print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
 
@@ -149,18 +148,8 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     ref_img = deprocessImg.detach().cpu().numpy().squeeze()
     inv_img = imgGen.detach().cpu().numpy().squeeze()
 
-    #print "ref_img.shape", ref_img.shape, "inv_img.shape", inv_img.shape
-    #print "ref_img ", ref_img.min(), ref_img.max()
-    #print "inv_img ", inv_img.min(), inv_img.max()
-
     psnr = get_PSNR(ref_img, inv_img, peak=1.0)
     ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
-
-    #print "targetImg l1 Stat:"
-    #getL1Stat(net, targetImg)
-    #print "xGen l1 Stat:"
-    #getL1Stat(net, xGen)
-    #print "Done"
 
     return psnr, ssim
 
@@ -178,6 +167,7 @@ if __name__ == '__main__':
         parser.add_argument('--eps', type = float, default = 1e-3)
         parser.add_argument('--AMSGrad', type = bool, default = True)
         parser.add_argument('--learning_rate', type = float, default = 1e-2)
+        parser.add_argument('--lambda_sourcelayer', type = float, default = 1e-2)
         parser.add_argument('--decrease_LR', type = int, default = 20)
         parser.add_argument('--sourceLayer', type = str, default = 'ReLU2')
         parser.add_argument('--targetLayer', type = str, default = 'fc3')
