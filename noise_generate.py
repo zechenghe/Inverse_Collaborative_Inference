@@ -26,20 +26,15 @@ from skimage.measure import compare_ssim
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
+    NClasses = args.NClasses
+    inverseClass = args.inverseClass
+    assert inverseClass < NClasses
+
     sourceLayer = args.sourceLayer
     targetLayer = args.targetLayer
     gpu = args.gpu
 
     if args.dataset == 'MNIST':
-
-        imageWidth = 28
-        imageHeight = 28
-        imageSize = imageWidth * imageHeight
-        NChannels = 1
-        NClasses = 10
-
-        inverseClass = args.inverseClass
-        assert inverseClass < NClasses
 
         mu = torch.tensor([0.5], dtype=torch.float32)
         sigma = torch.tensor([0.5], dtype=torch.float32)
@@ -98,7 +93,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     xGen = torch.zeros(sourceLayerOutput.size(), requires_grad = True)
     xGen = xGen.cuda() if gpu else xGen
 
-    refSource = torch.tensor(mean=0.0, std=1.0, size=xGen.size(), requires_grad = True)
+    refSource = torch.random.normal(mean=0.0, std=1.0, size=xGen.size(), requires_grad = True)
 
     layer = net.layerDict[targetLayer]
     targetLayerOutput = net.getLayerOutput(xGen, layer)
@@ -199,7 +194,12 @@ if __name__ == '__main__':
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
 
-        args.NClasses = 10
+        if args.dataset == 'MNIST':
+            args.imageWidth = 28
+            args.imageHeight = 28
+            args.imageSize = imageWidth * imageHeight
+            args.NChannels = 1
+            args.NClasses = 10
 
         noise_gen(
             args = args,
