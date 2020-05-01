@@ -96,7 +96,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     refSource = torch.randn(size=xGen.size(), requires_grad = True)
 
     layer = net.layerDict[targetLayer]
-    targetLayerOutput = net.getLayerOutput(xGen, layer)
+    targetLayerOutput = net.getLayerOutput(targetImg, layer)
     refTarget = torch.zeros(targetLayerOutput.size(), requires_grad = True)
 
     print "xGen.size", xGen.size()
