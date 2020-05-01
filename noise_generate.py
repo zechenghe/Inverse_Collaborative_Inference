@@ -152,6 +152,10 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             noise_level = xGen
         )
     print "acc", acc
+
+    noise_gen = xGen.detach().cpu().numpy()
+    noise_file_name = args.sourceLayer + '-' + args.targetLayer
+    np.save(model_dir + noise_file_name, noise_gen)
     return acc
 
 
