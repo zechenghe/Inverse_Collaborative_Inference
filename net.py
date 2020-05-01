@@ -140,7 +140,7 @@ class LeNet(nn.Module):
                 sourceLayeridx = self.features.index(sourceLayer)
                 targetLayeridx = self.features.index(targetLayer)
 
-                for func in self.features[layeridx+1:targetLayeridx+1]:
+                for func in self.features[sourceLayeridx+1:targetLayeridx+1]:
                     x = func(x)
                 return x
 
@@ -148,13 +148,13 @@ class LeNet(nn.Module):
                 sourceLayeridx = self.classifier.index(sourceLayer)
                 targetLayeridx = self.classifier.index(targetLayer)
 
-                for func in self.classifier[layeridx+1:targetLayeridx+1]:
+                for func in self.classifier[sourceLayeridx+1:targetLayeridx+1]:
                     x = func(x)
                 return x
 
             elif sourceLayer in self.features and targetLayer in self.classifier:
                 sourceLayeridx = self.features.index(sourceLayer)
-                for func in self.features[layeridx+1:]:
+                for func in self.features[sourceLayeridx+1:]:
                     x = func(x)
 
                 x = x.view(-1, self.feature_dims)
