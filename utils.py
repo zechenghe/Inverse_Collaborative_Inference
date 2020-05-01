@@ -297,6 +297,12 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
         noise = noise.cuda() if gpu else noise
         output = input + noise
 
+    elif noise_type == 'noise_gen':
+        batch_size = input.size().cpu().detech().numpy()[0]
+        noise = torch.cat(batch_size * [noise_level])
+        noise = noise.cuda() if gpu else noise
+        output = input + noise
+
     else:
         print "Unsupported Noise Type: ", noise_type
         exit(1)

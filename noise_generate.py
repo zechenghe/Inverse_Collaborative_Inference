@@ -144,22 +144,15 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
 
-    exit(0)
-
-        #print "Iter ", i, "Feature loss: ", featureLoss.cpu().detach().numpy(), "TVLoss: ", TVLoss.cpu().detach().numpy(), "l2Loss: ", normLoss.cpu().detach().numpy()
-
-    # save the final result
-    imgGen = xGen.clone()
-    imgGen = deprocess(imgGen)
-    torchvision.utils.save_image(imgGen, save_img_dir + str(inverseClass) + '-inv.png')
-
-    ref_img = deprocessImg.detach().cpu().numpy().squeeze()
-    inv_img = imgGen.detach().cpu().numpy().squeeze()
-
-    psnr = get_PSNR(ref_img, inv_img, peak=1.0)
-    ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
-
-    return psnr, ssim
+    acc = evalTestSplitModel(
+            testloader, net, net,
+            layer=args.sourceLayer,
+            gpu = args.gpu,
+            noise_type = 'noise_gen',
+            noise_level = xGen.squeeze(dim=0) 
+        )
+    print "acc", acc
+    return acc
 
 
 if __name__ == '__main__':
