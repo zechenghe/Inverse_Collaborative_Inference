@@ -111,7 +111,12 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
     print "targetLayerOutput.size", targetLayerOutput.size()
 
-    optimizer = optim.Adam(params = [xGen], lr = learningRate, eps = eps, amsgrad = AMSGrad)
+    optimizer = optim.Adam(
+        params = [xGen],
+        lr = args.learningRate,
+        eps = args.eps,
+        amsgrad = args.AMSGrad
+    )
 
     for i in range(NIters):
 
