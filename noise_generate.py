@@ -117,7 +117,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         amsgrad = args.AMSGrad
     )
 
-    for i in range(args.NIters):
+    for i in range(args.iters):
 
         optimizer.zero_grad()
 
