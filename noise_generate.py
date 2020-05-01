@@ -25,7 +25,8 @@ from skimage.measure import compare_ssim
 #####################
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
-
+    inverseClass = args.inverseClass
+    NClasses = args.NClasses
     assert inverseClass < NClasses
 
     sourceLayer = args.sourceLayer
