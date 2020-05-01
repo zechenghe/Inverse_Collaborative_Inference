@@ -113,7 +113,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
     optimizer = optim.Adam(
         params = [xGen],
-        lr = args.learningRate,
+        lr = args.learning_rate,
         eps = args.eps,
         amsgrad = args.AMSGrad
     )
