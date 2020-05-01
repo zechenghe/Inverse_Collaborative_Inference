@@ -149,7 +149,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             layer=args.sourceLayer,
             gpu = args.gpu,
             noise_type = 'noise_gen',
-            noise_level = xGen.squeeze(dim=0) 
+            noise_level = xGen
         )
     print "acc", acc
     return acc
