@@ -39,7 +39,6 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         NClasses = 10
 
         inverseClass = args.inverseClass
-        NClasses = args.NClasses
         assert inverseClass < NClasses
 
         mu = torch.tensor([0.5], dtype=torch.float32)
@@ -199,6 +198,8 @@ if __name__ == '__main__':
 
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
+
+        args.NClasses = 10
 
         noise_gen(
             args = args,
