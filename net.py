@@ -131,6 +131,45 @@ class LeNet(nn.Module):
         # Should not go here
         raise Exception("Target layer not found")
 
+    def getLayerOutputFrom(self, x, sourceLayer, targetLayer):
+        if sourceLayer in self.layerDict and targetLayer in self.layerDict:
+            sourceLayer = self.layerDict[sourceLayer]
+            targetLayer = self.layerDict[targetLayer]
+
+            if sourceLayer in self.features and targetLayer in self.features:
+                sourceLayeridx = self.features.index(sourceLayer)
+                targetLayeridx = self.features.index(targetLayer)
+
+                for func in self.features[layeridx+1:targetLayeridx+1]:
+                    x = func(x)
+                return x
+
+            elif sourceLayer in self.classifier and targetLayer in self.classifier:
+                sourceLayeridx = self.classifier.index(sourceLayer)
+                targetLayeridx = self.classifier.index(targetLayer)
+
+                for func in self.classifier[layeridx+1:targetLayeridx+1]:
+                    x = func(x)
+                return x
+
+            elif sourceLayer in self.features and targetLayer in self.classifier:
+                sourceLayeridx = self.features.index(sourceLayer)
+                for func in self.features[layeridx+1:]:
+                    x = func(x)
+
+                x = x.view(-1, self.feature_dims)
+                targetLayeridx = self.classifier.index(targetLayer)
+                for func in self.classifier[:targetLayeridx+1]:
+                    x = func(x)
+                return x
+
+            else:
+                print "Target layer cannot before source layer"
+                exit(1)
+        else:
+            print "layer not exists"
+            exit(1)
+
 
 class CIFAR10CNN(nn.Module):
     def __init__(self, NChannels):
