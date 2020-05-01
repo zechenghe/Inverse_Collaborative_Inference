@@ -16,6 +16,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 
+
 def accuracy(predictions, labels):
 
     if not (predictions.shape == labels.shape):
@@ -240,7 +241,7 @@ def saveImage(img, filepath):
     torchvision.utils.save_image(img, filepath)
 
 
-def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
+def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True, args=None):
 
     if noise_type == 'Gaussian':
         noise = torch.randn(input.size()) * noise_level + mean
@@ -299,8 +300,11 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True):
 
     elif noise_type == 'noise_gen':
 
+        noise = np.load("checkpoints/MNIST/ReLU2-fc3.npy")
+        noise = torch.Tensor(noise, dtype = torch.float)
+
         batch_size = input.size()[0]
-        noise = torch.cat(batch_size * [noise_level])
+        noise = torch.cat(batch_size * [noise])
         noise = noise.cuda() if gpu else noise
         output = input + noise
 
