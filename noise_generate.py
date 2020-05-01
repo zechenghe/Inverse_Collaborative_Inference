@@ -197,7 +197,7 @@ if __name__ == '__main__':
         if args.dataset == 'MNIST':
             args.imageWidth = 28
             args.imageHeight = 28
-            args.imageSize = imageWidth * imageHeight
+            args.imageSize = 28*28
             args.NChannels = 1
             args.NClasses = 10
 
