@@ -93,7 +93,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     xGen = torch.zeros(sourceLayerOutput.size(), requires_grad = True)
     xGen = xGen.cuda() if gpu else xGen
 
-    refSource = torch.random.normal(mean=0.0, std=1.0, size=xGen.size(), requires_grad = True)
+    refSource = torch.randn(size=xGen.size(), requires_grad = True)
 
     layer = net.layerDict[targetLayer]
     targetLayerOutput = net.getLayerOutput(xGen, layer)
