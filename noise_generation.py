@@ -14,8 +14,6 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 from net import *
-from utils import getImgByClass
-#from utils import *
 
 from skimage.measure import compare_ssim
 
@@ -26,6 +24,7 @@ from skimage.measure import compare_ssim
 #####################
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
+    from utils import *
 
     sourceLayer = args.noise_sourceLayer
     targetLayer = args.noise_targetLayer
