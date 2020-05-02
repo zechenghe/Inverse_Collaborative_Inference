@@ -318,7 +318,7 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True, args=None):
 
     return output
 
-def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, noise_level = 0.0):
+def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = None, noise_level = 0.0, args=None):
     testIter = iter(testloader)
     acc = 0.0
     NBatch = 0
@@ -336,7 +336,7 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             edgeOutput = netEdge.forward(batchX).clone()
 
         if noise_type != None:
-            edgeOutput = apply_noise(edgeOutput, noise_type, noise_level, gpu=gpu)
+            edgeOutput = apply_noise(edgeOutput, noise_type, noise_level, gpu=gpu, args=args)
 
         #cloudOuput = net.forward(batchX)
         logits = netCloud.forward_from(edgeOutput, layer)
