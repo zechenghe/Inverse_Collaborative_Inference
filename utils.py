@@ -16,7 +16,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 
-from noise_generation import *
+from noise_generation import noise_gen
 
 def accuracy(predictions, labels):
 
