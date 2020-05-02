@@ -14,6 +14,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 from net import *
+from utils import *
 
 from skimage.measure import compare_ssim
 
@@ -24,7 +25,6 @@ from skimage.measure import compare_ssim
 #####################
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
-    from utils import *
 
     sourceLayer = args.noise_sourceLayer
     targetLayer = args.noise_targetLayer
@@ -140,17 +140,17 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
     noise_gen = xGen.detach().cpu().numpy()
-    noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer
+    noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer + '-' + str(round(args.noise_level, 2))
     np.save(model_dir + noise_file_name, noise_gen)
 
-#    acc = evalTestSplitModel(
-#            testloader, net, net,
-#            layer=args.noise_sourceLayer,
-#            gpu = args.gpu,
-#            noise_type = 'noise_gen',
-#            noise_level = xGen
-#        )
-#    print "acc", acc
+    acc = evalTestSplitModel(
+            testloader, net, net,
+            layer=args.noise_sourceLayer,
+            gpu = args.gpu,
+            noise_type = 'noise_gen',
+            noise_level = xGen
+        )
+    print "acc", acc
 
     return noise_gen
 
@@ -191,7 +191,6 @@ if __name__ == '__main__':
             model_dir = "checkpoints/MNIST/",
             model_name = "ckpt.pth"
         )
-
 
     except:
         traceback.print_exc(file=sys.stdout)

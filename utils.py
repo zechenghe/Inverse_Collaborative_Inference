@@ -16,7 +16,6 @@ import torch.nn.functional as F
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
 
-from noise_generation import noise_gen
 
 def accuracy(predictions, labels):
 
@@ -300,13 +299,10 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True, args=None):
         output = input + noise
 
     elif noise_type == 'noise_gen':
-        noise = noise_gen(
-            args = args,
-            model_dir = args.model_dir,
-            model_name = args.model_name,
-        )
-
+        noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer + '-' + str(round(args.noise_level, 2))
+        noise = np.save(args.model_dir + noise_file_name)
         noise = torch.tensor(noise, dtype = torch.float)
+        
         batch_size = input.size()[0]
         noise = torch.cat(batch_size * [noise])
         noise = noise.cuda() if gpu else noise
