@@ -301,9 +301,12 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True, args=None):
 
     elif noise_type == 'noise_gen':
         noise = noise_gen(
-            args = args
+            args = args,
+            model_dir = args.model_dir,
+            model_name = args.model_name,
         )
 
+        noise = torch.tensor(noise, dtype = torch.float)
         batch_size = input.size()[0]
         noise = torch.cat(batch_size * [noise])
         noise = noise.cuda() if gpu else noise

@@ -26,9 +26,6 @@ from skimage.measure import compare_ssim
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
-    model_dir = model_dir if args.model_dir is None else model_dir
-    model_name = model_name if args.model_name is None else model_name
-
     sourceLayer = args.noise_sourceLayer
     targetLayer = args.noise_targetLayer
     gpu = args.gpu
