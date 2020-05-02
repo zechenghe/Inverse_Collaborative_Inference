@@ -5,3 +5,4 @@ checkpoints/
 inverted_access_free/
 inverted_blackbox_decoder/
 inverted_whitebox/CIFAR10
+noise/
