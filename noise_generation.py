@@ -140,8 +140,12 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
     noise_gen = xGen.detach().cpu().numpy()
+    noise_dir = 'noise/' + args.dataset + '/'
     noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer + '-' + str(round(args.noise_level, 2))
-    np.save(model_dir + noise_file_name, noise_gen)
+
+    if not os.path.exists(noise_dir):
+        os.makedirs(noise_dir)
+    np.save(noise_dir + noise_file_name, noise_gen)
 
     acc = evalTestSplitModel(
             testloader, net, net,
