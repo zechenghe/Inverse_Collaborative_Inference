@@ -184,13 +184,13 @@ if __name__ == '__main__':
         parser.set_defaults(validation=True)
         args = parser.parse_args()
 
-        model_dir = "checkpoints/" + args.dataset + '/'
-        model_name = "ckpt.pth"
+        args.model_dir = "checkpoints/" + args.dataset + '/'
+        args.model_name = "ckpt.pth"
 
         noise_gen(
             args = args,
-            model_dir = "checkpoints/MNIST/",
-            model_name = "ckpt.pth"
+            model_dir = args.model_dir,
+            model_name = args.model_name
         )
 
     except:
