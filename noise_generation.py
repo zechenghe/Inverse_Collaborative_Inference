@@ -81,7 +81,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     deprocessImg = deprocess(targetImg.clone())
 
     softmaxLayer = nn.Softmax().cuda() if gpu else nn.Softmax()
-    ReLULayer = nn.ReLU(True).cuda() if gpu else nn.ReLU(True)
+    ReLULayer = nn.ReLU(False).cuda() if gpu else nn.ReLU(False)
     if gpu:
         targetImg = targetImg.cuda()
 
