@@ -145,7 +145,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
     acc = evalTestSplitModel(
             testloader, net, net,
-            layer=args.sourceLayer,
+            layer=args.noiser_sourceLayer,
             gpu = args.gpu,
             noise_type = 'noise_gen',
             noise_level = xGen
