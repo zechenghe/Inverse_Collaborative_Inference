@@ -92,7 +92,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     refSource = torch.randn(size=xGen.size(), requires_grad = True) * args.noise_level
 
     # If noise for relu layer, make all entries non-negtive
-    if 'ReLU' in args.sourceLayer:
+    if 'ReLU' in args.noise_sourceLayer:
         refSource = ReLULayer(refSource)
 
 
@@ -128,12 +128,12 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         optimizer.zero_grad()
 
         targetLayerOutput = net.getLayerOutputFrom(
-            x = ReLULayer(xGen) if 'ReLU' in args.sourceLayer else xGen,
+            x = ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen,
             sourceLayer = sourceLayer,
             targetLayer = targetLayer
         )
 
-        sourceLayerLoss = (((ReLULayer(xGen) if 'ReLU' in args.sourceLayer else xGen) - refSource)**2).mean()
+        sourceLayerLoss = (((ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen) - refSource)**2).mean()
         targetLayerLoss = ((targetLayerOutput - refTarget)**2).mean()
 
         totalLoss = targetLayerLoss + sourceLayerLoss * args.noise_lambda_sourcelayer
@@ -145,7 +145,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         #"sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
         #"targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
-    noise_gen = (ReLULayer(xGen) if 'ReLU' in args.sourceLayer else xGen).detach().cpu().numpy()
+    noise_gen = (ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen).detach().cpu().numpy()
     noise_dir = 'noise/' + args.dataset + '/'
     noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer + '-' + str(round(args.noise_level, 2))
 
