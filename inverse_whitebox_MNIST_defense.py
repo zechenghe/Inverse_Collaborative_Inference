@@ -243,9 +243,7 @@ if __name__ == '__main__':
         parser.add_argument('--noise_learning_rate', type = float, default = 1e-1)
         parser.add_argument('--noise_lambda_sourcelayer', type = float, default = 1e-1)
         parser.add_argument('--noise_decrease_LR', type = int, default = 20)
-        parser.add_argument('--noise_sourceLayer', type = str, default = 'ReLU2')
         parser.add_argument('--noise_targetLayer', type = str, default = 'fc3')
-        parser.add_argument('--noise_level', type = float, default = 1.0)
 
         args = parser.parse_args()
 
