@@ -98,9 +98,9 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         refTarget = refTarget.cuda()
         refSource = refSource.cuda()
 
-    print "xGen.size", xGen.size()
-    print "refSource.size", refSource.size()
-    print "refTarget.size", refTarget.size()
+    #print "xGen.size", xGen.size()
+    #print "refSource.size", refSource.size()
+    #print "refTarget.size", refTarget.size()
 
     targetLayerOutput = net.getLayerOutputFrom(
         x = xGen,
@@ -108,7 +108,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         targetLayer = targetLayer
     )
 
-    print "targetLayerOutput.size", targetLayerOutput.size()
+    #print "targetLayerOutput.size", targetLayerOutput.size()
 
     optimizer = optim.Adam(
         params = [xGen],
@@ -135,9 +135,9 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         totalLoss.backward(retain_graph=True)
         optimizer.step()
 
-        print "Iter ", i, "loss: ", totalLoss.cpu().detach().numpy(), \
-        "sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
-        "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
+        #print "Iter ", i, "loss: ", totalLoss.cpu().detach().numpy(), \
+        #"sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
+        #"targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
     noise_gen = xGen.detach().cpu().numpy()
     noise_dir = 'noise/' + args.dataset + '/'
@@ -155,7 +155,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             noise_level = xGen,
             args = args
         )
-    print "acc", acc
+    print "noise level", args.noise_level, "acc", acc
 
     return noise_gen
 
@@ -179,7 +179,7 @@ if __name__ == '__main__':
         parser.add_argument('--noise_decrease_LR', type = int, default = 20)
         parser.add_argument('--noise_sourceLayer', type = str, default = 'ReLU2')
         parser.add_argument('--noise_targetLayer', type = str, default = 'fc3')
-        parser.add_argument('--noise_level', type = float, default = 1.0)
+        parser.add_argument('--noise_level', type = float, default = None)
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
@@ -191,11 +191,20 @@ if __name__ == '__main__':
         args.model_dir = "checkpoints/" + args.dataset + '/'
         args.model_name = "ckpt.pth"
 
-        noise_gen(
-            args = args,
-            model_dir = args.model_dir,
-            model_name = args.model_name
-        )
+        if args.noise_level == None:
+            for nl in range(0, 5, 0.5):
+                args.noise_level = nl
+                noise_gen(
+                    args = args,
+                    model_dir = args.model_dir,
+                    model_name = args.model_name
+                )
+        else:
+            noise_gen(
+                args = args,
+                model_dir = args.model_dir,
+                model_name = args.model_name
+            )
 
     except:
         traceback.print_exc(file=sys.stdout)
