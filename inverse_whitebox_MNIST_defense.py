@@ -271,7 +271,9 @@ if __name__ == '__main__':
         psnr_hist = []
         ssim_hist = []
 
+        default_nl = np.arange(0, 1, 0.1) if args.noise_type != 'noise_gen' else np.arange(0, 5, 0.5)
         noise_range = [args.noise_level] if args.noise_level != None else np.arange(0, 1, 0.1)
+
         for noise_level in noise_range:
             noise_hist.append(noise_level)
 
