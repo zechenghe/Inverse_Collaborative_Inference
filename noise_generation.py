@@ -140,7 +140,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
         targetLayerLoss = ((targetLayerOutput - refTarget)**2).mean()
 
-        totalLoss = targetLayerLoss + sourceLayerLoss * args.noise_level
+        totalLoss = targetLayerLoss + sourceLayerLoss * args.noise_lambda_sourcelayer
 
         totalLoss.backward(retain_graph=True)
         optimizer.step()
