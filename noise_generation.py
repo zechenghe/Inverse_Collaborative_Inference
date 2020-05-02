@@ -77,7 +77,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     net.eval()
 
     # Only to get the feature size
-    targetImg, _ = getImgByClass(inverseIter, C = inverseClass)
+    targetImg, _ = getImgByClass(inverseIter, C = 0)
     deprocessImg = deprocess(targetImg.clone())
 
     if gpu:
