@@ -192,7 +192,7 @@ if __name__ == '__main__':
         args.model_name = "ckpt.pth"
 
         if args.noise_level == None:
-            for nl in range(0, 5, 0.5):
+            for nl in np.arange(0, 5, 0.5):
                 args.noise_level = nl
                 noise_gen(
                     args = args,
