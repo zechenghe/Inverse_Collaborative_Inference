@@ -300,9 +300,9 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True, args=None):
         output = input + noise
 
     elif noise_type == 'noise_gen':
-        # TODO: integrate noise_gen
-        noise = np.load("checkpoints/MNIST/ReLU2-fc3.npy")
-        noise = torch.tensor(noise, dtype = torch.float)
+        noise = noise_gen(
+            args = args
+        )
 
         batch_size = input.size()[0]
         noise = torch.cat(batch_size * [noise])

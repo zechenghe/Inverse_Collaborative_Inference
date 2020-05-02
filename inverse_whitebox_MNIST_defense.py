@@ -77,7 +77,7 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         BatchSize = 32, learningRate = 1e-3, NDecreaseLR = 20, eps = 1e-3, lambda_TV = 1e3, lambda_l2 = 1.0,
         AMSGrad = True, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth",
         save_img_dir = "inverted/MNIST/MSE_TV/", saveIter = 10, gpu = True, validation=False,
-        noise_type = None, noise_level = 0.0):
+        noise_type = None, noise_level = 0.0, args=None):
 
     assert inverseClass < NClasses
 
@@ -150,7 +150,7 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
 
     # Apply noise
     if noise_type != None:
-        refFeature = apply_noise(refFeature, noise_type, noise_level, gpu=args.gpu)
+        refFeature = apply_noise(refFeature, noise_type, noise_level, gpu=args.gpu, args=args)
 
     if gpu:
         xGen = torch.zeros(targetImg.size(), requires_grad = True, device="cuda")
@@ -251,8 +251,8 @@ if __name__ == '__main__':
 
 
         args.noise_sourceLayer = args.layer
-        model_dir = "checkpoints/" + args.dataset + '/'
-        model_name = "ckpt.pth"
+        args.model_dir = "checkpoints/" + args.dataset + '/'
+        args.model_name = "ckpt.pth"
 
         if args.dataset == 'MNIST':
 
@@ -289,8 +289,8 @@ if __name__ == '__main__':
                 psnr, ssim = inverse(DATASET = args.dataset, network = args.network, NIters = args.iters, imageWidth = imageWidth, inverseClass = c,
                 imageHeight = imageHeight, imageSize = imageSize, NChannels = NChannels, NClasses = NClasses, layer = args.layer,
                 BatchSize = args.batch_size, learningRate = args.learning_rate, NDecreaseLR = args.decrease_LR, eps = args.eps, lambda_TV = args.lambda_TV, lambda_l2 = args.lambda_l2,
-                AMSGrad = args.AMSGrad, model_dir = model_dir, model_name = model_name, save_img_dir = save_img_dir, saveIter = args.save_iter,
-                gpu = args.gpu, validation=args.validation, noise_type = noise_type, noise_level = noise_level)
+                AMSGrad = args.AMSGrad, model_dir = args.model_dir, model_name = args.model_name, save_img_dir = save_img_dir, saveIter = args.save_iter,
+                gpu = args.gpu, validation=args.validation, noise_type = noise_type, noise_level = noise_level, args = args)
 
                 psnr_sum += psnr / NClasses
                 ssim_sum += ssim / NClasses

@@ -26,6 +26,9 @@ from skimage.measure import compare_ssim
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
+    model_dir = model_dir if args.model_dir is None else args.model_dir
+    model_name = model_name if args.model_name is None else args.model_name
+
     sourceLayer = args.noise_sourceLayer
     targetLayer = args.noise_targetLayer
     gpu = args.gpu
@@ -88,9 +91,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     sourceLayerOutput = net.getLayerOutput(targetImg, layer)
     xGen = torch.zeros(sourceLayerOutput.size(), requires_grad = True, device="cuda" if args.gpu else 'cpu')
 
-    #refSource = torch.randn(size=xGen.size(), requires_grad = True) * args.noise_level
-    refSource = torch.zeros(size=xGen.size(), requires_grad = True) * args.noise_level
-
+    refSource = torch.randn(size=xGen.size(), requires_grad = True) * args.noise_level
 
     layer = net.layerDict[targetLayer]
     targetLayerOutput = net.getLayerOutput(targetImg, layer)
@@ -145,14 +146,14 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer
     np.save(model_dir + noise_file_name, noise_gen)
 
-    acc = evalTestSplitModel(
-            testloader, net, net,
-            layer=args.noise_sourceLayer,
-            gpu = args.gpu,
-            noise_type = 'noise_gen',
-            noise_level = xGen
-        )
-    print "acc", acc
+#    acc = evalTestSplitModel(
+#            testloader, net, net,
+#            layer=args.noise_sourceLayer,
+#            gpu = args.gpu,
+#            noise_type = 'noise_gen',
+#            noise_level = xGen
+#        )
+#    print "acc", acc
 
     return noise_gen
 
@@ -187,13 +188,6 @@ if __name__ == '__main__':
 
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
-
-        if args.dataset == 'MNIST':
-            args.imageWidth = 28
-            args.imageHeight = 28
-            args.imageSize = 28*28
-            args.NChannels = 1
-            args.NClasses = 10
 
         noise_gen(
             args = args,
