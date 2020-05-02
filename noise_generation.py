@@ -133,9 +133,9 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             targetLayer = targetLayer
         )
 
-        #sourceLayerLoss = (((ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen) - refSource)**2).mean()
+        sourceLayerLoss = (((ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen) - refSource)**2).mean()
         #sourceLayerLoss = -((ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen)**2).mean()
-        sourceLayerLoss = -torch.abs(ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen).mean()
+        #sourceLayerLoss = -torch.abs(ReLULayer(xGen) if 'ReLU' in args.noise_sourceLayer else xGen).mean()
 
 
         targetLayerLoss = ((targetLayerOutput - refTarget)**2).mean()
