@@ -26,12 +26,8 @@ from skimage.measure import compare_ssim
 
 def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
-    NClasses = args.NClasses
-    inverseClass = args.inverseClass
-    assert inverseClass < NClasses
-
-    sourceLayer = args.sourceLayer
-    targetLayer = args.targetLayer
+    sourceLayer = args.noise_sourceLayer
+    targetLayer = args.noise_targetLayer
     gpu = args.gpu
 
     if args.dataset == 'MNIST':
@@ -116,12 +112,12 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
     optimizer = optim.Adam(
         params = [xGen],
-        lr = args.learning_rate,
-        eps = args.eps,
-        amsgrad = args.AMSGrad
+        lr = args.noise_learning_rate,
+        eps = args.noise_eps,
+        amsgrad = args.noise_AMSGrad
     )
 
-    for i in range(args.iters):
+    for i in range(args.noise_iters):
 
         optimizer.zero_grad()
 
@@ -134,7 +130,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         sourceLayerLoss = ((xGen - refSource)**2).mean()
         targetLayerLoss = ((targetLayerOutput - refTarget)**2).mean()
 
-        totalLoss = targetLayerLoss + sourceLayerLoss * args.lambda_sourcelayer
+        totalLoss = targetLayerLoss + sourceLayerLoss * args.noise_lambda_sourcelayer
 
         totalLoss.backward(retain_graph=True)
         optimizer.step()
@@ -144,7 +140,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
         "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
     noise_gen = xGen.detach().cpu().numpy()
-    noise_file_name = args.sourceLayer + '-' + args.targetLayer
+    noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer
     np.save(model_dir + noise_file_name, noise_gen)
 
     acc = evalTestSplitModel(
@@ -168,16 +164,16 @@ if __name__ == '__main__':
         parser = argparse.ArgumentParser()
         parser.add_argument('--dataset', type = str, default = 'MNIST')
         parser.add_argument('--network', type = str, default = 'LeNet')
-        parser.add_argument('--iters', type = int, default = 500)
-        parser.add_argument('--eps', type = float, default = 1e-3)
-        parser.add_argument('--AMSGrad', type = bool, default = True)
-        parser.add_argument('--learning_rate', type = float, default = 1e-1)
-        parser.add_argument('--lambda_sourcelayer', type = float, default = 1e-1)
-        parser.add_argument('--decrease_LR', type = int, default = 20)
-        parser.add_argument('--sourceLayer', type = str, default = 'ReLU2')
-        parser.add_argument('--targetLayer', type = str, default = 'fc3')
-        parser.add_argument('--save_iter', type = int, default = 10)
         parser.add_argument('--inverseClass', type = int, default = 0)
+
+        parser.add_argument('--noise_iters', type = int, default = 500)
+        parser.add_argument('--noise_eps', type = float, default = 1e-3)
+        parser.add_argument('--noise_AMSGrad', type = bool, default = True)
+        parser.add_argument('--noise_learning_rate', type = float, default = 1e-1)
+        parser.add_argument('--noise_lambda_sourcelayer', type = float, default = 1e-1)
+        parser.add_argument('--noise_decrease_LR', type = int, default = 20)
+        parser.add_argument('--noise_sourceLayer', type = str, default = 'ReLU2')
+        parser.add_argument('--noise_targetLayer', type = str, default = 'fc3')
         parser.add_argument('--noise_level', type = float, default = 1.0)
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')

@@ -236,8 +236,21 @@ if __name__ == '__main__':
 
         parser.add_argument('--novalidation', dest='validation', action='store_false')
         parser.set_defaults(validation=True)
+
+        parser.add_argument('--noise_iters', type = int, default = 500)
+        parser.add_argument('--noise_eps', type = float, default = 1e-3)
+        parser.add_argument('--noise_AMSGrad', type = bool, default = True)
+        parser.add_argument('--noise_learning_rate', type = float, default = 1e-1)
+        parser.add_argument('--noise_lambda_sourcelayer', type = float, default = 1e-1)
+        parser.add_argument('--noise_decrease_LR', type = int, default = 20)
+        parser.add_argument('--noise_sourceLayer', type = str, default = 'ReLU2')
+        parser.add_argument('--noise_targetLayer', type = str, default = 'fc3')
+        parser.add_argument('--noise_level', type = float, default = 1.0)
+
         args = parser.parse_args()
 
+
+        args.noise_sourceLayer = args.layer
         model_dir = "checkpoints/" + args.dataset + '/'
         model_name = "ckpt.pth"
 
