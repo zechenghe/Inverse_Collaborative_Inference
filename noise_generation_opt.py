@@ -132,7 +132,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
             sourceLayerOutput = net.getLayerOutput(
                 x = batchX,
-                layer = sourceLayer
+                targetLayer = sourceLayer
             )
 
             targetLayerOutput = net.getLayerOutputFrom(
@@ -143,7 +143,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
 
             refTargetLayer = net.getLayerOutput(
                 x = batchX,
-                layer = targetLayer
+                targetLayer = targetLayer
             )
 
             sourceLayerLoss = ((xGen - refSource)**2).mean()
