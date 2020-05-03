@@ -113,7 +113,6 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     NBatch = len(trainset) / args.noise_batch_size
     cudnn.benchmark = True
 
-    exit(0)
 
     for epoch in range(args.noise_epochs):
         lossTrain = 0.0
@@ -158,9 +157,9 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             totalLoss.backward(retain_graph=True)
             optimizer.step()
 
-            #print "Iter ", i, "loss: ", totalLoss.cpu().detach().numpy(), \
-            #"sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
-            #"targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
+            print "Epoch", epoch, "Iter ", i, "loss: ", totalLoss.cpu().detach().numpy(), \
+            "sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
+            "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
     noise_gen = xGen.detach().cpu().numpy()
     noise_dir = 'noise_opt/' + args.dataset + '/'
