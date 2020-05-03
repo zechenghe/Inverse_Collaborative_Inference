@@ -298,8 +298,8 @@ def apply_noise(input, noise_type, noise_level, mean=0.0, gpu=True, args=None):
         noise = noise.cuda() if gpu else noise
         output = input + noise
 
-    elif noise_type == 'noise_gen':
-        noise_dir = 'noise/' + args.dataset + '/'
+    elif noise_type == 'noise_gen' or 'noise_gen_opt':
+        noise_dir = 'noise' + ('_opt' if noise_type == 'noise_gen_opt' else "") + '/' + args.dataset + '/'
         noise_file_name = args.noise_sourceLayer + '-' + args.noise_targetLayer + '-' + str(round(noise_level, 2))
 
         noise = np.load(noise_dir + noise_file_name + '.npy')

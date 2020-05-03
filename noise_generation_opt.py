@@ -135,8 +135,8 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
                 targetLayer = net.layerDict[sourceLayer]
             )
 
-            print "sourceLayerOutput.size", sourceLayerOutput.size()
-            print "xGen.size", xGen.size()
+            #print "sourceLayerOutput.size", sourceLayerOutput.size()
+            #print "xGen.size", xGen.size()
 
             targetLayerOutput = net.getLayerOutputFrom(
                 x = sourceLayerOutput + torch.cat(args.noise_batch_size * [xGen]),
@@ -179,7 +179,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             testloader, net, net,
             layer=args.noise_sourceLayer,
             gpu = args.gpu,
-            noise_type = 'noise_gen',
+            noise_type = 'noise_gen_opt',
             noise_level = args.noise_level,
             args = args
         )
@@ -222,7 +222,7 @@ if __name__ == '__main__':
         args.model_name = "ckpt.pth"
 
         if args.noise_level == None:
-            for nl in np.arange(0, 5, 0.5):
+            for nl in np.arange(0, 110, 10):
                 args.noise_level = nl
                 noise_gen(
                     args = args,
