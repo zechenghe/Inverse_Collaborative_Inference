@@ -60,7 +60,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     x_train, y_train = trainset.data, trainset.targets,
     x_test, y_test = testset.data, testset.targets,
 
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size = 1,
+    trainloader = torch.utils.data.DataLoader(trainset, batch_size = args.noise_batch_size,
                                       shuffle = False, num_workers = 1)
     testloader = torch.utils.data.DataLoader(testset, batch_size = 1000,
                                       shuffle = False, num_workers = 1)
@@ -144,7 +144,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
                 targetLayer = targetLayer
             )
 
-            refTargetLayer = net.getLayerOutput(
+            refTarget = net.getLayerOutput(
                 x = batchX,
                 targetLayer = net.layerDict[targetLayer]
             )
