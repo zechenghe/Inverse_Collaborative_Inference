@@ -91,6 +91,9 @@ class LeNet(nn.Module):
 
     def forward_from(self, x, layer):
 
+        if layer == 'input':
+            return x
+
         if layer in self.layerDict:
             targetLayer = self.layerDict[layer]
 
@@ -117,6 +120,9 @@ class LeNet(nn.Module):
 
 
     def getLayerOutput(self, x, targetLayer):
+        if targetLayer == 'input':
+            return x
+
         for layer in self.features:
             x = layer(x)
             if layer == targetLayer:
@@ -132,6 +138,13 @@ class LeNet(nn.Module):
         raise Exception("Target layer not found")
 
     def getLayerOutputFrom(self, x, sourceLayer, targetLayer):
+
+        if targetLayer == 'input':
+            return x
+
+        if sourceLayer == 'input':
+            return getLayerOutput(self, x, self.layerDict[targetLayer])
+
         if sourceLayer in self.layerDict and targetLayer in self.layerDict:
             sourceLayer = self.layerDict[sourceLayer]
             targetLayer = self.layerDict[targetLayer]
