@@ -136,7 +136,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             )
 
             targetLayerOutput = net.getLayerOutputFrom(
-                x = sourceLayerOutput + BatchSize * [xGen],
+                x = sourceLayerOutput + args.noise_batch_size * [xGen],
                 sourceLayer = sourceLayer,
                 targetLayer = targetLayer
             )
