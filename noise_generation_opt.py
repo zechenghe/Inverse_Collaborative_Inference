@@ -160,7 +160,7 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
             totalLoss.backward(retain_graph=True)
             optimizer.step()
 
-            print "Epoch", epoch, "Iter ", i, "loss: ", totalLoss.cpu().detach().numpy(), \
+        print "Epoch", epoch, "loss: ", totalLoss.cpu().detach().numpy(), \
             "sourceLayerLoss: ", sourceLayerLoss.cpu().detach().numpy(), \
             "targetLayerLoss: ", targetLayerLoss.cpu().detach().numpy()
 
@@ -208,7 +208,7 @@ if __name__ == '__main__':
         parser.add_argument('--noise_sourceLayer', type = str, default = 'ReLU2')
         parser.add_argument('--noise_targetLayer', type = str, default = 'fc3')
         parser.add_argument('--noise_level', type = float, default = None)
-        parser.add_argument('--noise_epochs', type = int, default = 2)
+        parser.add_argument('--noise_epochs', type = int, default = 1)
         parser.add_argument('--noise_batch_size', type = int, default = 32)
 
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
