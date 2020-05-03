@@ -92,8 +92,8 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
     refSource = torch.randn(size=xGen.size(), requires_grad = True) * args.noise_level
 
     # If noise for relu layer, make all entries non-negtive
-    if 'ReLU' in args.noise_sourceLayer:
-        refSource = ReLULayer(refSource)
+    #if 'ReLU' in args.noise_sourceLayer:
+    #    refSource = ReLULayer(refSource)
 
 
     layer = net.layerDict[targetLayer]
