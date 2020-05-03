@@ -135,6 +135,9 @@ def noise_gen(args, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
                 targetLayer = net.layerDict[targetLayer]
             )
 
+            print "sourceLayerOutput.size", sourceLayerOutput.size()
+            print "xGen.size", xGen.size()
+
             targetLayerOutput = net.getLayerOutputFrom(
                 x = sourceLayerOutput + torch.cat(args.noise_batch_size * [xGen]),
                 sourceLayer = sourceLayer,
