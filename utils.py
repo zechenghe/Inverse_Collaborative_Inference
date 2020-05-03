@@ -326,6 +326,9 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             batchX = batchX.cuda()
             batchY = batchY.cuda()
 
+        if hasattr(args, 'add_noise_to_input') and args.add_noise_to_input:
+            batchX = apply_noise(batchX, noise_type, noise_level, gpu=gpu, args=args)
+
         try:
             edgeOutput = netEdge.getLayerOutput(batchX, netEdge.layerDict[layer]).clone()
         except Exception, e:
@@ -333,7 +336,7 @@ def evalTestSplitModel(testloader, netEdge, netCloud, layer, gpu, noise_type = N
             #print str(e)
             edgeOutput = netEdge.forward(batchX).clone()
 
-        if noise_type != None:
+        if noise_type != None and not (hasattr(args, 'add_noise_to_input') and args.add_noise_to_input):
             edgeOutput = apply_noise(edgeOutput, noise_type, noise_level, gpu=gpu, args=args)
 
         #cloudOuput = net.forward(batchX)

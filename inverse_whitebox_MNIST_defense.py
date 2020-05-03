@@ -232,6 +232,8 @@ if __name__ == '__main__':
         parser.add_argument('--noise_type', type = str, default = None)
         parser.add_argument('--noise_level', type = float, default = None)
 
+        parser.add_argument('--add_noise_to_input', dest='add_noise_to_input', action='store_true')
+
         parser.add_argument('--nogpu', dest='gpu', action='store_false')
         parser.set_defaults(gpu=True)
 
