@@ -1,5 +1,6 @@
 .DS_Store
 *.pyc
+*.npy
 data/
 checkpoints/
 inverted_access_free/
