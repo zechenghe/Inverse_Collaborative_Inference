@@ -1,0 +1,228 @@
+Noise_type:  Gaussian Noise_level:  0.0 Acc:  0.9914 PSNR:  10.305392684812508 SSIM 0.5104697539676867 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.1 Acc:  0.9914 PSNR:  10.26985444314457 SSIM 0.5092597194725266 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.2 Acc:  0.9902 PSNR:  10.225583747317938 SSIM 0.5071390790648674 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.30000000000000004 Acc:  0.9890000000000001 PSNR:  10.196860630416289 SSIM 0.5069056982798268 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.4 Acc:  0.9860000000000001 PSNR:  10.088589703067832 SSIM 0.5035565179519927 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.5 Acc:  0.9808999999999999 PSNR:  10.087829970242186 SSIM 0.5072758952716829 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.6000000000000001 Acc:  0.9690000000000001 PSNR:  10.059987750652965 SSIM 0.5019259063416786 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.7000000000000001 Acc:  0.9498 PSNR:  10.004508554639418 SSIM 0.4981136600368003 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.8 Acc:  0.9208000000000001 PSNR:  9.856012694192051 SSIM 0.4954507692213497 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.9 Acc:  0.8802 PSNR:  10.020185490126902 SSIM 0.4965783232906393 Add to input: True
+Noise_type:  Gaussian Noise_level:  1.0 Acc:  0.8356 PSNR:  9.840320741364083 SSIM 0.4909449127661276 Add to input: True
+Noise_type:  Gaussian Noise_level:  1.5 Acc:  0.5711 PSNR:  9.38578513608677 SSIM 0.4748527867547359 Add to input: True
+Noise_type:  Gaussian Noise_level:  2.0 Acc:  0.378 PSNR:  8.62208672531686 SSIM 0.4339854097408045 Add to input: True
+Noise_type:  Gaussian Noise_level:  2.5 Acc:  0.269 PSNR:  8.532396985019691 SSIM 0.4181844715016351 Add to input: True
+Noise_type:  Gaussian Noise_level:  3.0 Acc:  0.21459999999999999 PSNR:  8.035639302142235 SSIM 0.3543717419080965 Add to input: True
+Noise_type:  Gaussian Noise_level:  3.5 Acc:  0.17770000000000002 PSNR:  7.660170123394628 SSIM 0.3545375414767831 Add to input: True
+Noise_type:  Gaussian Noise_level:  4.0 Acc:  0.15739999999999998 PSNR:  7.590331174889241 SSIM 0.33916777149062793 Add to input: True
+Noise_type:  Gaussian Noise_level:  4.5 Acc:  0.149 PSNR:  6.684254002872868 SSIM 0.28006795445068716 Add to input: True
+Noise_type:  Gaussian Noise_level:  5.0 Acc:  0.1389 PSNR:  6.345457992708484 SSIM 0.24815838301470183 Add to input: True
+Noise_type:  Gaussian Noise_level:  0.0 Acc:  0.9914 PSNR:  10.304813278923522 SSIM 0.5104279766151075 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.1 Acc:  0.9907999999999999 PSNR:  10.245034037403444 SSIM 0.5081646779744747 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.2 Acc:  0.9904 PSNR:  10.222554322828326 SSIM 0.5073108696676267 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.30000000000000004 Acc:  0.9904 PSNR:  10.168034724492282 SSIM 0.5049391890240122 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.4 Acc:  0.9877999999999998 PSNR:  10.079071734475663 SSIM 0.5036905136440751 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.5 Acc:  0.9846 PSNR:  10.049838403739082 SSIM 0.5009344634437017 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.6000000000000001 Acc:  0.9799 PSNR:  9.984936851474806 SSIM 0.4984208870956636 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.7000000000000001 Acc:  0.9751000000000001 PSNR:  10.000341531424642 SSIM 0.499897088674663 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.8 Acc:  0.9662 PSNR:  9.701057683021665 SSIM 0.4856971919154907 Add to input: False
+Noise_type:  Gaussian Noise_level:  0.9 Acc:  0.9532 PSNR:  9.794780438552058 SSIM 0.49384541442495966 Add to input: False
+Noise_type:  Gaussian Noise_level:  1.0 Acc:  0.9353999999999999 PSNR:  9.87587063389299 SSIM 0.493298164124509 Add to input: False
+Noise_type:  Gaussian Noise_level:  1.5 Acc:  0.8076000000000001 PSNR:  9.178937854884943 SSIM 0.4648777801776176 Add to input: False
+Noise_type:  Gaussian Noise_level:  2.0 Acc:  0.6774 PSNR:  8.999899002621701 SSIM 0.44679147462304764 Add to input: False
+Noise_type:  Gaussian Noise_level:  2.5 Acc:  0.5729 PSNR:  8.606772902560225 SSIM 0.4108461851569477 Add to input: False
+Noise_type:  Gaussian Noise_level:  3.0 Acc:  0.49910000000000004 PSNR:  8.08612185159109 SSIM 0.3949758587332119 Add to input: False
+Noise_type:  Gaussian Noise_level:  3.5 Acc:  0.43970000000000004 PSNR:  7.727965281477154 SSIM 0.3745369642155665 Add to input: False
+Noise_type:  Gaussian Noise_level:  4.0 Acc:  0.38570000000000004 PSNR:  6.834350015940821 SSIM 0.2784692096866832 Add to input: False
+Noise_type:  Gaussian Noise_level:  4.5 Acc:  0.34819999999999995 PSNR:  6.874809370752926 SSIM 0.28731180694039893 Add to input: False
+Noise_type:  Gaussian Noise_level:  5.0 Acc:  0.3202 PSNR:  6.525469215031398 SSIM 0.22522560226471894 Add to input: False
+Noise_type:  Laplace Noise_level:  0.0 Acc:  0.9914 PSNR:  10.305525982014387 SSIM 0.5104685177100444 Add to input: True
+Noise_type:  Laplace Noise_level:  0.1 Acc:  0.991 PSNR:  10.281070419837134 SSIM 0.509950931247307 Add to input: True
+Noise_type:  Laplace Noise_level:  0.2 Acc:  0.9885000000000002 PSNR:  10.202286904230512 SSIM 0.5074787310007042 Add to input: True
+Noise_type:  Laplace Noise_level:  0.30000000000000004 Acc:  0.9838999999999999 PSNR:  10.155563648054239 SSIM 0.5066872557878945 Add to input: True
+Noise_type:  Laplace Noise_level:  0.4 Acc:  0.9737 PSNR:  10.054767241745438 SSIM 0.500054360714073 Add to input: True
+Noise_type:  Laplace Noise_level:  0.5 Acc:  0.9458000000000002 PSNR:  9.946780247720207 SSIM 0.4965631146268841 Add to input: True
+Noise_type:  Laplace Noise_level:  0.6000000000000001 Acc:  0.9045 PSNR:  9.822269106723438 SSIM 0.4936274620928532 Add to input: True
+Noise_type:  Laplace Noise_level:  0.7000000000000001 Acc:  0.8402 PSNR:  9.795621984330305 SSIM 0.48755846579946016 Add to input: True
+Noise_type:  Laplace Noise_level:  0.8 Acc:  0.7672000000000001 PSNR:  9.833704388716178 SSIM 0.48951157565150216 Add to input: True
+Noise_type:  Laplace Noise_level:  0.9 Acc:  0.685 PSNR:  9.26350178974552 SSIM 0.4741011052979738 Add to input: True
+Noise_type:  Laplace Noise_level:  1.0 Acc:  0.6152999999999998 PSNR:  9.57821193612254 SSIM 0.47879168081450635 Add to input: True
+Noise_type:  Laplace Noise_level:  1.5 Acc:  0.3484000000000001 PSNR:  8.675114035988313 SSIM 0.4380371226057225 Add to input: True
+Noise_type:  Laplace Noise_level:  2.0 Acc:  0.2313 PSNR:  7.973925994510631 SSIM 0.39595429626247464 Add to input: True
+Noise_type:  Laplace Noise_level:  2.5 Acc:  0.17729999999999999 PSNR:  7.33439858050954 SSIM 0.3439140682686011 Add to input: True
+Noise_type:  Laplace Noise_level:  3.0 Acc:  0.1536 PSNR:  6.958503631802795 SSIM 0.3005394234907465 Add to input: True
+Noise_type:  Laplace Noise_level:  3.5 Acc:  0.13840000000000002 PSNR:  7.011055223869068 SSIM 0.2854578741551126 Add to input: True
+Noise_type:  Laplace Noise_level:  4.0 Acc:  0.1233 PSNR:  6.530696263217033 SSIM 0.24894121709016195 Add to input: True
+Noise_type:  Laplace Noise_level:  4.5 Acc:  0.11790000000000003 PSNR:  6.1912105810034275 SSIM 0.23008394934588747 Add to input: True
+Noise_type:  Laplace Noise_level:  5.0 Acc:  0.1203 PSNR:  5.7109555475734055 SSIM 0.1282323814011695 Add to input: True
+Noise_type:  Laplace Noise_level:  0.0 Acc:  0.9914 PSNR:  10.304829933187953 SSIM 0.5104258408052422 Add to input: False
+Noise_type:  Laplace Noise_level:  0.1 Acc:  0.9908999999999999 PSNR:  10.274155551322378 SSIM 0.5097517722345026 Add to input: False
+Noise_type:  Laplace Noise_level:  0.2 Acc:  0.9895999999999999 PSNR:  10.223415572053863 SSIM 0.5078622331492788 Add to input: False
+Noise_type:  Laplace Noise_level:  0.30000000000000004 Acc:  0.9881 PSNR:  10.112996524676149 SSIM 0.5024006240559189 Add to input: False
+Noise_type:  Laplace Noise_level:  0.4 Acc:  0.9831000000000001 PSNR:  9.90619474803762 SSIM 0.49984235992237885 Add to input: False
+Noise_type:  Laplace Noise_level:  0.5 Acc:  0.9731 PSNR:  9.796147592116906 SSIM 0.49426060098136254 Add to input: False
+Noise_type:  Laplace Noise_level:  0.6000000000000001 Acc:  0.9591 PSNR:  9.92768195843011 SSIM 0.49573129758021883 Add to input: False
+Noise_type:  Laplace Noise_level:  0.7000000000000001 Acc:  0.9363999999999999 PSNR:  9.689341457751528 SSIM 0.4811065374967385 Add to input: False
+Noise_type:  Laplace Noise_level:  0.8 Acc:  0.9098 PSNR:  9.796843305198488 SSIM 0.48380094019085723 Add to input: False
+Noise_type:  Laplace Noise_level:  0.9 Acc:  0.8766 PSNR:  9.49114562430224 SSIM 0.4796280627761722 Add to input: False
+Noise_type:  Laplace Noise_level:  1.0 Acc:  0.8426 PSNR:  9.466203574653745 SSIM 0.4750393718997628 Add to input: False
+Noise_type:  Laplace Noise_level:  1.5 Acc:  0.6593 PSNR:  9.001012627694328 SSIM 0.44250917479635116 Add to input: False
+Noise_type:  Laplace Noise_level:  2.0 Acc:  0.5277000000000001 PSNR:  8.085352757068135 SSIM 0.386809174015521 Add to input: False
+Noise_type:  Laplace Noise_level:  2.5 Acc:  0.4253 PSNR:  7.697261883296442 SSIM 0.3608889126257748 Add to input: False
+Noise_type:  Laplace Noise_level:  3.0 Acc:  0.3655 PSNR:  7.468547163118816 SSIM 0.3156512369787388 Add to input: False
+Noise_type:  Laplace Noise_level:  3.5 Acc:  0.30199999999999994 PSNR:  6.575376052712173 SSIM 0.25360208230477055 Add to input: False
+Noise_type:  Laplace Noise_level:  4.0 Acc:  0.2731 PSNR:  6.0817607667819615 SSIM 0.1748716451389397 Add to input: False
+Noise_type:  Laplace Noise_level:  4.5 Acc:  0.257 PSNR:  6.1933902559845455 SSIM 0.22190527700351287 Add to input: False
+Noise_type:  Laplace Noise_level:  5.0 Acc:  0.2327 PSNR:  5.59870711474587 SSIM 0.13593835985278538 Add to input: False
+Noise_type:  dropout Noise_level:  0.0 Acc:  0.9914 PSNR:  10.305520404915791 SSIM 0.5104667439116918 Add to input: True
+Noise_type:  dropout Noise_level:  0.1 Acc:  0.9889000000000001 PSNR:  9.477995160658777 SSIM 0.4750266816165703 Add to input: True
+Noise_type:  dropout Noise_level:  0.2 Acc:  0.9843 PSNR:  8.877927165127575 SSIM 0.44571275799181204 Add to input: True
+Noise_type:  dropout Noise_level:  0.30000000000000004 Acc:  0.9712 PSNR:  8.526539819398355 SSIM 0.41794514181932674 Add to input: True
+Noise_type:  dropout Noise_level:  0.4 Acc:  0.9461999999999999 PSNR:  7.588929281935053 SSIM 0.3626723557231343 Add to input: True
+Noise_type:  dropout Noise_level:  0.5 Acc:  0.8938 PSNR:  7.400971670921667 SSIM 0.33292808453575573 Add to input: True
+Noise_type:  dropout Noise_level:  0.6000000000000001 Acc:  0.7945 PSNR:  6.874680290622139 SSIM 0.26842324442286514 Add to input: True
+Noise_type:  dropout Noise_level:  0.7000000000000001 Acc:  0.6347 PSNR:  6.589896478779516 SSIM 0.22218534146113889 Add to input: True
+Noise_type:  dropout Noise_level:  0.8 Acc:  0.4206 PSNR:  6.159819268483156 SSIM 0.14376746879282679 Add to input: True
+Noise_type:  dropout Noise_level:  0.9 Acc:  0.22110000000000002 PSNR:  6.161305401674456 SSIM 0.06581368886997085 Add to input: True
+Noise_type:  dropout Noise_level:  0.0 Acc:  0.9914 PSNR:  10.304950985659737 SSIM 0.5104257788601745 Add to input: False
+Noise_type:  dropout Noise_level:  0.1 Acc:  0.9907 PSNR:  9.378159557287377 SSIM 0.472264740144848 Add to input: False
+Noise_type:  dropout Noise_level:  0.2 Acc:  0.9889999999999999 PSNR:  8.697984504459455 SSIM 0.43306993432754837 Add to input: False
+Noise_type:  dropout Noise_level:  0.30000000000000004 Acc:  0.9870999999999999 PSNR:  8.119740554916302 SSIM 0.3882902879529185 Add to input: False
+Noise_type:  dropout Noise_level:  0.4 Acc:  0.9835 PSNR:  7.8131639428193616 SSIM 0.37014222338416347 Add to input: False
+Noise_type:  dropout Noise_level:  0.5 Acc:  0.9783999999999999 PSNR:  7.415368269233114 SSIM 0.33501078990776656 Add to input: False
+Noise_type:  dropout Noise_level:  0.6000000000000001 Acc:  0.9661 PSNR:  6.922933936242862 SSIM 0.2756761621087119 Add to input: False
+Noise_type:  dropout Noise_level:  0.7000000000000001 Acc:  0.944 PSNR:  6.5229392933903005 SSIM 0.24262784236198098 Add to input: False
+Noise_type:  dropout Noise_level:  0.8 Acc:  0.8784999999999998 PSNR:  6.198356278589315 SSIM 0.13289025332057008 Add to input: False
+Noise_type:  dropout Noise_level:  0.9 Acc:  0.6975 PSNR:  6.033990452641472 SSIM 0.0636281167340674 Add to input: False
+Epoch 0 loss:  2.2778459e-05 sourceLayerLoss:  0.01709262 targetLayerLoss:  5.685839e-06
+noise level 0 acc 0.9914
+Epoch 0 loss:  0.091563076 sourceLayerLoss:  90.96054 targetLayerLoss:  0.00060253136
+noise level 10 acc 0.9914
+Epoch 0 loss:  0.35466316 sourceLayerLoss:  352.22824 targetLayerLoss:  0.0024349196
+noise level 20 acc 0.9913000000000001
+Epoch 0 loss:  0.8620234 sourceLayerLoss:  855.3671 targetLayerLoss:  0.0066562183
+noise level 30 acc 0.9915999999999998
+Epoch 0 loss:  1.557563 sourceLayerLoss:  1546.464 targetLayerLoss:  0.011098823
+noise level 40 acc 0.9917999999999999
+Epoch 0 loss:  2.4532812 sourceLayerLoss:  2437.644 targetLayerLoss:  0.015636822
+noise level 50 acc 0.9911999999999999
+Epoch 0 loss:  3.525245 sourceLayerLoss:  3502.3162 targetLayerLoss:  0.022928782
+noise level 60 acc 0.9912000000000001
+Epoch 0 loss:  4.7816787 sourceLayerLoss:  4747.767 targetLayerLoss:  0.033911098
+noise level 70 acc 0.9914999999999999
+Epoch 0 loss:  6.1519322 sourceLayerLoss:  6112.194 targetLayerLoss:  0.03973808
+noise level 80 acc 0.9911999999999999
+Epoch 0 loss:  7.8440332 sourceLayerLoss:  7785.2603 targetLayerLoss:  0.0587727
+noise level 90 acc 0.9911999999999999
+Epoch 0 loss:  10.206155 sourceLayerLoss:  10132.013 targetLayerLoss:  0.074141175
+noise level 100 acc 0.9908999999999999
+Noise_type:  noise_gen_opt Noise_level:  0 Acc:  0.9914 PSNR:  10.463706277407484 SSIM 0.5138105940149434 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  10 Acc:  0.9914 PSNR:  9.645440108067072 SSIM 0.49924335271650666 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  20 Acc:  0.9913000000000001 PSNR:  8.621968644164317 SSIM 0.47231863532885476 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  30 Acc:  0.9915999999999998 PSNR:  7.900020343114615 SSIM 0.4379738455885427 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  40 Acc:  0.9917999999999999 PSNR:  7.999098553898104 SSIM 0.4434269355134947 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  50 Acc:  0.9911999999999999 PSNR:  7.729296045495325 SSIM 0.4206084112281486 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  60 Acc:  0.9912000000000001 PSNR:  6.4273358619976895 SSIM 0.36286353854116715 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  70 Acc:  0.9914999999999999 PSNR:  6.868978762489961 SSIM 0.3837290592304117 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  80 Acc:  0.9911999999999999 PSNR:  6.66933732685801 SSIM 0.3599971920000683 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  90 Acc:  0.9911999999999999 PSNR:  5.83669431915901 SSIM 0.33523644404434055 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  100 Acc:  0.9908999999999999 PSNR:  5.551737671009637 SSIM 0.31225537075554705 Add to input: False
+Epoch 0 loss:  1.2170461e-08 sourceLayerLoss:  1.2170364e-05 targetLayerLoss:  9.6105287e-14
+noise level 0 acc 0.9914
+Epoch 0 loss:  0.107337296 sourceLayerLoss:  106.76296 targetLayerLoss:  0.0005743268
+noise level 10 acc 0.991
+Epoch 0 loss:  0.3856629 sourceLayerLoss:  383.6972 targetLayerLoss:  0.0019656867
+noise level 20 acc 0.9912000000000001
+Epoch 0 loss:  0.91855276 sourceLayerLoss:  912.06055 targetLayerLoss:  0.006492109
+noise level 30 acc 0.9914
+Epoch 0 loss:  1.5681201 sourceLayerLoss:  1555.0322 targetLayerLoss:  0.0130878845
+noise level 40 acc 0.9914
+Epoch 0 loss:  2.4165852 sourceLayerLoss:  2398.6558 targetLayerLoss:  0.017929409
+noise level 50 acc 0.9911
+Epoch 0 loss:  3.62453 sourceLayerLoss:  3594.5154 targetLayerLoss:  0.03001443
+noise level 60 acc 0.9907
+Epoch 0 loss:  4.5077634 sourceLayerLoss:  4467.9893 targetLayerLoss:  0.03977371
+noise level 70 acc 0.9901
+Epoch 0 loss:  6.1309447 sourceLayerLoss:  6076.662 targetLayerLoss:  0.054282006
+noise level 80 acc 0.9899999999999999
+Epoch 0 loss:  7.722059 sourceLayerLoss:  7646.8564 targetLayerLoss:  0.07520189
+noise level 90 acc 0.9892999999999998
+Epoch 0 loss:  9.397264 sourceLayerLoss:  9312.0205 targetLayerLoss:  0.0852423
+noise level 100 acc 0.9913000000000001
+Noise_type:  noise_gen_opt Noise_level:  0 Acc:  0.9914 PSNR:  10.940157154482653 SSIM 0.5426303798712615 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  10 Acc:  0.991 PSNR:  10.95395276304101 SSIM 0.5418253404986052 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  20 Acc:  0.9912000000000001 PSNR:  10.88103939380468 SSIM 0.5330126392258897 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  30 Acc:  0.9914 PSNR:  10.07976475008831 SSIM 0.5336234378701168 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  40 Acc:  0.9914 PSNR:  9.78903045312276 SSIM 0.49950758294182573 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  50 Acc:  0.9911 PSNR:  8.659514343248892 SSIM 0.4534506474495228 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  60 Acc:  0.9907 PSNR:  7.289323631020899 SSIM 0.4356059939190958 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  70 Acc:  0.9901 PSNR:  8.383811128799676 SSIM 0.42825425432169006 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  80 Acc:  0.9899999999999999 PSNR:  7.3103262112253 SSIM 0.3963448740016527 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  90 Acc:  0.9892999999999998 PSNR:  5.7615817619168626 SSIM 0.36016566515694814 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  100 Acc:  0.9913000000000001 PSNR:  5.659890185701537 SSIM 0.3124379923666735 Add to input: False
+Epoch 0 loss:  5.2652283e-09 sourceLayerLoss:  5.265226e-06 targetLayerLoss:  2.3151136e-15
+noise level 0 acc 0.9914
+Epoch 0 loss:  0.09293018 sourceLayerLoss:  92.72512 targetLayerLoss:  0.00020505209
+noise level 10 acc 0.9913999999999998
+Epoch 0 loss:  0.38513368 sourceLayerLoss:  384.13538 targetLayerLoss:  0.0009982829
+noise level 20 acc 0.9913000000000001
+Epoch 0 loss:  0.8496372 sourceLayerLoss:  847.8103 targetLayerLoss:  0.001826853
+noise level 30 acc 0.9912999999999998
+Epoch 0 loss:  1.48018 sourceLayerLoss:  1473.1106 targetLayerLoss:  0.007069391
+noise level 40 acc 0.9913000000000001
+Epoch 0 loss:  2.4700499 sourceLayerLoss:  2457.8145 targetLayerLoss:  0.012235469
+noise level 50 acc 0.9909999999999999
+Epoch 0 loss:  3.6598368 sourceLayerLoss:  3651.4106 targetLayerLoss:  0.008426025
+noise level 60 acc 0.9911
+Epoch 0 loss:  4.9725943 sourceLayerLoss:  4949.8574 targetLayerLoss:  0.022736672
+noise level 70 acc 0.9909999999999999
+Epoch 0 loss:  6.0206523 sourceLayerLoss:  6000.0977 targetLayerLoss:  0.020554774
+noise level 80 acc 0.9908999999999999
+Epoch 0 loss:  7.585475 sourceLayerLoss:  7549.6406 targetLayerLoss:  0.03583391
+noise level 90 acc 0.9911999999999999
+Epoch 0 loss:  8.942671 sourceLayerLoss:  8908.5 targetLayerLoss:  0.034169845
+noise level 100 acc 0.9903000000000001
+Noise_type:  noise_gen_opt Noise_level:  0 Acc:  0.9914 PSNR:  10.306893178947176 SSIM 0.5105467813609613 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  10 Acc:  0.9913999999999998 PSNR:  10.293882600993305 SSIM 0.5099816287032098 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  20 Acc:  0.9913000000000001 PSNR:  10.193459575159077 SSIM 0.5061177755571878 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  30 Acc:  0.9912999999999998 PSNR:  10.026679686171413 SSIM 0.5029766563183552 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  40 Acc:  0.9913000000000001 PSNR:  9.811654653446855 SSIM 0.4958066812897125 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  50 Acc:  0.9909999999999999 PSNR:  9.155024096983258 SSIM 0.47496999449784966 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  60 Acc:  0.9911 PSNR:  9.241935982575606 SSIM 0.4719488811077474 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  70 Acc:  0.9909999999999999 PSNR:  8.479677347385008 SSIM 0.4418267284286431 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  80 Acc:  0.9908999999999999 PSNR:  8.516445421219077 SSIM 0.4575677428620585 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  90 Acc:  0.9911999999999999 PSNR:  8.458315458279495 SSIM 0.44822899198529326 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  100 Acc:  0.9903000000000001 PSNR:  8.26933609018916 SSIM 0.4279614147413198 Add to input: False
+Epoch 0 loss:  7.977976e-05 sourceLayerLoss:  0.0797705 targetLayerLoss:  9.260199e-09
+noise level 0 acc 0.9914
+Epoch 0 loss:  0.072276 sourceLayerLoss:  72.22244 targetLayerLoss:  5.3551757e-05
+noise level 10 acc 0.9914
+Epoch 0 loss:  0.3679257 sourceLayerLoss:  367.60968 targetLayerLoss:  0.0003160048
+noise level 20 acc 0.9914
+Epoch 0 loss:  0.6969623 sourceLayerLoss:  696.25055 targetLayerLoss:  0.00071176165
+noise level 30 acc 0.9912999999999998
+Epoch 0 loss:  1.2682549 sourceLayerLoss:  1267.2369 targetLayerLoss:  0.0010178918
+noise level 40 acc 0.9914
+Epoch 0 loss:  2.2480187 sourceLayerLoss:  2246.0303 targetLayerLoss:  0.0019885246
+noise level 50 acc 0.9911999999999999
+Epoch 0 loss:  3.158131 sourceLayerLoss:  3155.2854 targetLayerLoss:  0.0028453718
+noise level 60 acc 0.9912999999999998
+Epoch 0 loss:  3.7094257 sourceLayerLoss:  3705.4976 targetLayerLoss:  0.0039280606
+noise level 70 acc 0.9914
+Epoch 0 loss:  4.667751 sourceLayerLoss:  4662.9673 targetLayerLoss:  0.0047830115
+noise level 80 acc 0.9913000000000001
+Epoch 0 loss:  5.495016 sourceLayerLoss:  5490.4062 targetLayerLoss:  0.004609565
+noise level 90 acc 0.9913000000000001
+Epoch 0 loss:  7.7419252 sourceLayerLoss:  7736.0854 targetLayerLoss:  0.005839541
+noise level 100 acc 0.9914999999999999
+Noise_type:  noise_gen_opt Noise_level:  0 Acc:  0.9914 PSNR:  9.115400176371626 SSIM 0.4261199517654945 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  10 Acc:  0.9914 PSNR:  7.378143950636996 SSIM 0.2916838468325309 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  20 Acc:  0.9914 PSNR:  6.252615065884573 SSIM 0.20868367254375142 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  30 Acc:  0.9912999999999998 PSNR:  4.787293554428768 SSIM 0.0856513417680901 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  40 Acc:  0.9914 PSNR:  4.81161938141973 SSIM 0.1381019731963583 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  50 Acc:  0.9911999999999999 PSNR:  4.983175568263661 SSIM 0.11789027230617433 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  60 Acc:  0.9912999999999998 PSNR:  4.5207991334725 SSIM 0.07414989190279274 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  70 Acc:  0.9914 PSNR:  4.448408226574155 SSIM 0.07584752372985377 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  80 Acc:  0.9913000000000001 PSNR:  4.011769822735953 SSIM 0.04043114768385358 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  90 Acc:  0.9913000000000001 PSNR:  4.0981515704895735 SSIM 0.041261468925380254 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  100 Acc:  0.9914999999999999 PSNR:  4.622379257665258 SSIM 0.04230770901262939 Add to input: False
