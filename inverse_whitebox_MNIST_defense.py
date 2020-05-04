@@ -283,7 +283,13 @@ if __name__ == '__main__':
         psnr_hist = []
         ssim_hist = []
 
-        default_nl = np.arange(0, 1, 0.1) if 'noise_gen' not in args.noise_type else np.arange(0, 110, 10)
+        if 'noise_gen' in args.noise_type:
+            default_nl = np.arange(0, 110, 10)
+        elif 'dropout' in args.noise_type:
+            default_nl = np.arange(0, 1, 0.1)
+        else:
+            default_nl = np.arange(0, 0.5, 5.5)
+
         noise_range = [args.noise_level] if args.noise_level != None else default_nl
 
         for noise_level in noise_range:
