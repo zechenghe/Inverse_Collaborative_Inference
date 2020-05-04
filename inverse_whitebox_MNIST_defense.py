@@ -288,7 +288,7 @@ if __name__ == '__main__':
         elif 'dropout' in args.noise_type:
             default_nl = np.arange(0, 1, 0.1)
         else:
-            default_nl = np.arange(0, 0.5, 5.5)
+            default_nl = np.arange(0, 5.5, 0.5)
 
         noise_range = [args.noise_level] if args.noise_level != None else default_nl
 
