@@ -286,9 +286,9 @@ if __name__ == '__main__':
         if 'noise_gen' in args.noise_type:
             default_nl = np.arange(0, 110, 10)
         elif 'dropout' in args.noise_type:
-            default_nl = np.concatenate((np.arange(0, 1, 0.1), np.arange(1.0, 5.5, 0.5)), axis=0)
+            default_nl = np.arange(0, 1, 0.1)
         else:
-            default_nl = np.arange(0, 5.5, 0.5)
+            default_nl = np.concatenate((np.arange(0, 1, 0.1), np.arange(1.0, 5.5, 0.5)), axis=0)
 
         noise_range = [args.noise_level] if args.noise_level != None else default_nl
 
@@ -320,7 +320,7 @@ if __name__ == '__main__':
 
             psnr_hist.append(psnr_sum)
             ssim_hist.append(ssim_sum)
-            print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc, "PSNR: ", psnr_sum, "SSIM", ssim_sum
+            print "Noise_type: ", noise_type, "Noise_level: ", noise_level, "Acc: ", acc, "PSNR: ", psnr_sum, "SSIM", ssim_sum, "Add to input:", args.add_noise_to_input
 
     except:
         traceback.print_exc(file=sys.stdout)
