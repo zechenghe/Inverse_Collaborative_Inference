@@ -149,18 +149,29 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
         targetImg = targetImg.cuda()
         softmaxLayer = nn.Softmax().cuda()
 
+    #if hasattr(args, 'add_noise_to_input') and args.add_noise_to_input:
+    #    targetImg = apply_noise(targetImg, noise_type, noise_level, gpu=args.gpu, args=args)
+
     if layer == 'prob':
-        reflogits = net.forward(targetImg)
+        if hasattr(args, 'add_noise_to_input') and args.add_noise_to_input:
+            targetImg_noised = apply_noise(targetImg, noise_type, noise_level, gpu=args.gpu, args=args)
+            reflogits = net.forward(targetImg_noised)
+        else:
+            reflogits = net.forward(targetImg)
         refFeature = softmaxLayer(reflogits)
     elif layer == 'label':
         refFeature = torch.zeros(1,NClasses)
         refFeature[0, inverseClass] = 1
     else:
         targetLayer = net.layerDict[layer]
-        refFeature = net.getLayerOutput(targetImg, targetLayer)
+        if hasattr(args, 'add_noise_to_input') and args.add_noise_to_input:
+            targetImg_noised = apply_noise(targetImg, noise_type, noise_level, gpu=args.gpu, args=args)
+            refFeature = net.getLayerOutput(targetImg_noised, targetLayer)
+        else:
+            refFeature = net.getLayerOutput(targetImg, targetLayer)
 
     # Apply noise
-    if noise_type != None:
+    if noise_type != None and not (hasattr(args, 'add_noise_to_input') and args.add_noise_to_input):
         refFeature = apply_noise(refFeature, noise_type, noise_level, gpu=args.gpu, args=args)
 
     if gpu:
