@@ -284,7 +284,7 @@ if __name__ == '__main__':
         ssim_hist = []
 
         if 'noise_gen' in args.noise_type:
-            default_nl = np.arange(0, 110, 10)
+            default_nl = np.concatenate((np.arange(0, 110, 10), np.arange(100, 1100, 100)), axis=0)
         elif 'dropout' in args.noise_type:
             default_nl = np.arange(0, 1, 0.1)
         else:
