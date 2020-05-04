@@ -296,9 +296,9 @@ if __name__ == '__main__':
             noise_hist.append(noise_level)
 
             if args.add_noise_to_input:
-                save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised_add_to_input/' + noise_type + '/' + str(noise_level) + '/'
+                save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised_add_to_input/' + noise_type + '/' + str(round(noise_level,1)) + '/'
             else:
-                save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised/' + noise_type + '/' + str(noise_level) + '/'
+                save_img_dir = "inverted_whitebox/" + args.dataset + '/' + args.layer + '/' + 'noised/' + noise_type + '/' + str(round(noise_level,1)) + '/'
 
             if not os.path.exists(save_img_dir):
                 os.makedirs(save_img_dir)
