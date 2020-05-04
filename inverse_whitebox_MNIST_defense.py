@@ -30,6 +30,16 @@ from skimage.measure import compare_ssim
 # A good parameter set to invert MNIST label only
 # python inverse.py --dataset MNIST --iters 5000 --learning_rate 1e-2 --layer prob --lambda_TV 1e-1 --lambda_l2 0.0
 
+# Gaussian and laplace noise
+# python inverse_whitebox_MNIST_defense.py --noise_type Laplace --layer ReLU2
+# python inverse_whitebox_MNIST_defense.py --noise_type Laplace --layer ReLU2 --add_noise_to_input
+
+# Noise opt
+# Generate a noise applied to noise_targetLayer that minimize the difference in noise_targetLayer
+# python noise_generation_opt.py --noise_sourceLayer ReLU2 --noise_targetLayer fc1
+# python inverse_whitebox_MNIST_defense.py --noise_type noise_gen --noise_targetLayer fc1
+# python noise_generation_opt.py --noise_sourceLayer conv2 --noise_targetLayer ReLU2 --noise_lambda_sourcelayer 1e-3 --noise_level 200
+
 #####################
 
 def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth"):
