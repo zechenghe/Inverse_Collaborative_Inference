@@ -29,6 +29,6 @@ Opt_Noise_Generation (){
     python inverse_whitebox_MNIST_defense.py --noise_type noise_gen_opt --layer pool2 --noise_targetLayer fc1
 }
 
-Random_Noise
-Dropout
-#Opt_Noise_Generation
+#Random_Noise
+#Dropout
+Opt_Noise_Generation
