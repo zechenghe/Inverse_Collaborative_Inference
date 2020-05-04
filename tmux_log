@@ -8,3 +8,49 @@ Epoch 0 loss:  0.79544204 sourceLayerLoss:  789.4285 targetLayerLoss:  0.0060134
 noise level 30 acc 0.9911999999999999
 Epoch 0 loss:  1.5772783 sourceLayerLoss:  1566.4421 targetLayerLoss:  0.010835963
 noise level 40 acc 0.9917
+Epoch 0 loss:  2.5091116 sourceLayerLoss:  2488.6177 targetLayerLoss:  0.020493826
+noise level 50 acc 0.9912999999999998
+Epoch 0 loss:  3.5502322 sourceLayerLoss:  3523.5916 targetLayerLoss:  0.026640452
+noise level 60 acc 0.9914
+Epoch 0 loss:  4.380344 sourceLayerLoss:  4348.4697 targetLayerLoss:  0.031874254
+noise level 70 acc 0.9917999999999999
+Epoch 0 loss:  6.478876 sourceLayerLoss:  6431.9907 targetLayerLoss:  0.04688504
+noise level 80 acc 0.9915
+Epoch 0 loss:  8.246792 sourceLayerLoss:  8189.155 targetLayerLoss:  0.057635833
+noise level 90 acc 0.9913999999999998
+Epoch 0 loss:  9.283087 sourceLayerLoss:  9222.226 targetLayerLoss:  0.060861077
+noise level 100 acc 0.9914000000000002
+Epoch 0 loss:  9.083019 sourceLayerLoss:  9010.998 targetLayerLoss:  0.07202047
+noise level 100 acc 0.9908999999999999
+Epoch 0 loss:  38.31599 sourceLayerLoss:  38052.73 targetLayerLoss:  0.26325983
+noise level 200 acc 0.9911999999999999
+Epoch 0 loss:  80.0663 sourceLayerLoss:  79542.85 targetLayerLoss:  0.5234435
+noise level 300 acc 0.9904999999999999
+Epoch 0 loss:  151.01991 sourceLayerLoss:  149927.14 targetLayerLoss:  1.0927532
+noise level 400 acc 0.9873000000000001
+Epoch 0 loss:  241.00131 sourceLayerLoss:  239358.83 targetLayerLoss:  1.6424675
+noise level 500 acc 0.9823999999999999
+Epoch 0 loss:  348.60675 sourceLayerLoss:  346288.06 targetLayerLoss:  2.318654
+noise level 600 acc 0.9785999999999999
+Epoch 0 loss:  460.44247 sourceLayerLoss:  457707.78 targetLayerLoss:  2.7346823
+noise level 700 acc 0.9795
+Epoch 0 loss:  650.9705 sourceLayerLoss:  647277.0 targetLayerLoss:  3.6934881
+noise level 800 acc 0.9439
+Epoch 0 loss:  804.8668 sourceLayerLoss:  800260.75 targetLayerLoss:  4.6060414
+noise level 900 acc 0.9351
+Epoch 0 loss:  941.0374 sourceLayerLoss:  935593.0 targetLayerLoss:  5.444421
+noise level 1000 acc 0.8628
+Noise_type:  noise_gen_opt Noise_level:  0 Acc:  0.9914 PSNR:  10.463706125075204 SSIM 0.513810462058879 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  10 Acc:  0.9914 PSNR:  9.527238773785456 SSIM 0.4918923497312493 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  20 Acc:  0.9913000000000001 PSNR:  9.209531396365772 SSIM 0.4819325323104893 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  30 Acc:  0.9911999999999999 PSNR:  8.401309884350177 SSIM 0.45396972882731285 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  40 Acc:  0.9917 PSNR:  8.044188031503705 SSIM 0.43995739179069354 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  50 Acc:  0.9912999999999998 PSNR:  7.956693799940041 SSIM 0.4361800719834351 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  60 Acc:  0.9914 PSNR:  6.974279491578421 SSIM 0.38719757787130166 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  70 Acc:  0.9917999999999999 PSNR:  7.571890990418452 SSIM 0.40885779724225746 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  80 Acc:  0.9915 PSNR:  6.630626144613481 SSIM 0.36183582836053746 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  90 Acc:  0.9913999999999998 PSNR:  6.547479070443315 SSIM 0.3224145020218244 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  100 Acc:  0.9908999999999999 PSNR:  6.2653216683657345 SSIM 0.32381232329345155 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  100 Acc:  0.9908999999999999 PSNR:  6.2653216683657345 SSIM 0.32381232329345155 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  200 Acc:  0.9911999999999999 PSNR:  5.595916607245049 SSIM 0.20080205617232458 Add to input: False
+Noise_type:  noise_gen_opt Noise_level:  300 Acc:  0.9904999999999999 PSNR:  4.897412212185325 SSIM 0.16447303402421418 Add to input: False
