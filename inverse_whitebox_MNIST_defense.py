@@ -332,7 +332,7 @@ if __name__ == '__main__':
 
             psnr_hist.append(psnr_sum)
             ssim_hist.append(ssim_sum)
-            print "Noise_type: ", noise_type, "Noise_level: ", round(noise_level,2), "Acc: ", round(acc,4), "PSNR: ", round(psnr_sum,4), "SSIM", round(ssim_sum,4), "Add to input:", args.add_noise_to_input
+            print "Noise_type:", noise_type, " Add to input:", args.add_noise_to_input, " Noise_level:", round(noise_level,2), " Acc:", round(acc,4), " PSNR:", round(psnr_sum,4), " SSIM:", round(ssim_sum,4)
 
     except:
         traceback.print_exc(file=sys.stdout)
