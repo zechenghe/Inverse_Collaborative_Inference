@@ -165,6 +165,7 @@ def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28,
     else:
         targetLayer = net.layerDict[layer]
         if hasattr(args, 'add_noise_to_input') and args.add_noise_to_input:
+            print "Noise added to input"
             targetImg_noised = apply_noise(targetImg, noise_type, noise_level, gpu=args.gpu, args=args)
             refFeature = net.getLayerOutput(targetImg_noised, targetLayer)
         else:
