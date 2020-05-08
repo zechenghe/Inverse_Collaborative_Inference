@@ -31,4 +31,10 @@ Opt_Noise_Generation (){
 
 #Random_Noise
 #Dropout
-Opt_Noise_Generation
+#Opt_Noise_Generation
+
+python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer pool1
+python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer conv2
+python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer ReLU2
+python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer pool2
+python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer fc1
