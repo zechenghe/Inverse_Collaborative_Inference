@@ -34,6 +34,10 @@ from skimage.measure import compare_ssim
 # python inverse_whitebox_MNIST_defense.py --noise_type Laplace --layer ReLU2
 # python inverse_whitebox_MNIST_defense.py --noise_type Laplace --layer ReLU2 --add_noise_to_input
 
+# Dropout
+# python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer ReLU2
+# python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer ReLU2 --add_noise_to_input
+
 # Noise opt
 # Generate a noise applied to noise_targetLayer that minimize the difference in noise_targetLayer
 # python noise_generation_opt.py --noise_sourceLayer ReLU2 --noise_targetLayer fc1
