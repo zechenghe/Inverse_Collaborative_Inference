@@ -10,7 +10,7 @@ Noise_type: Gaussian  Add to input: True  Noise_level: 0.8  Acc: 0.9236  PSNR: 8
 Noise_type: Gaussian  Add to input: True  Noise_level: 0.9  Acc: 0.8795  PSNR: 8.3144  SSIM: 0.3946
 Noise_type: Gaussian  Add to input: True  Noise_level: 1.0  Acc: 0.8307  PSNR: 8.269  SSIM: 0.3822
 Noise_type: Gaussian  Add to input: True  Noise_level: 1.5  Acc: 0.5653  PSNR: 7.2893  SSIM: 0.2926
-Noise_type: Gaussian  Add to input: True  Noise_level: 2.0  Acc: 0.3791  PSNR: 6.7394  SSIM: 0.2699
+Noise_type: Gaussian  Add to input: True  Noise_level: 2.0  Acc: 0.376  PSNR: 6.7591  SSIM: 0.2439
 Noise_type: Gaussian  Add to input: True  Noise_level: 2.5  Acc: 0.2704  PSNR: 6.0964  SSIM: 0.2019
 Noise_type: Gaussian  Add to input: True  Noise_level: 3.0  Acc: 0.2162  PSNR: 5.8825  SSIM: 0.1639
 Noise_type: Gaussian  Add to input: True  Noise_level: 3.5  Acc: 0.1736  PSNR: 5.4933  SSIM: 0.1594
@@ -27,7 +27,7 @@ Noise_type: Laplace  Add to input: True  Noise_level: 0.5  Acc: 0.9477  PSNR: 8.
 Noise_type: Laplace  Add to input: True  Noise_level: 0.6  Acc: 0.8996  PSNR: 8.4834  SSIM: 0.414
 Noise_type: Laplace  Add to input: True  Noise_level: 0.7  Acc: 0.8376  PSNR: 8.205  SSIM: 0.3859
 Noise_type: Laplace  Add to input: True  Noise_level: 0.8  Acc: 0.7624  PSNR: 8.0057  SSIM: 0.3655
-Noise_type: Laplace  Add to input: True  Noise_level: 0.9  Acc: 0.6872  PSNR: 7.4022  SSIM: 0.3173
+Noise_type: Laplace  Add to input: True  Noise_level: 0.9  Acc: 0.6833  PSNR: 7.6368  SSIM: 0.334
 Noise_type: Laplace  Add to input: True  Noise_level: 1.0  Acc: 0.6112  PSNR: 7.4483  SSIM: 0.3264
 Noise_type: Laplace  Add to input: True  Noise_level: 1.5  Acc: 0.3523  PSNR: 6.5227  SSIM: 0.2187
 Noise_type: Laplace  Add to input: True  Noise_level: 2.0  Acc: 0.2344  PSNR: 5.9448  SSIM: 0.1942
