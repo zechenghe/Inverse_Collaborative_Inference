@@ -72,7 +72,7 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/CIFA
         }
 
         testset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = False,
-                                       download=True, transform = tsf['test'])
+                                       download=False, transform = tsf['test'])
 
     #print "len(testset) ", len(testset)
     x_test, y_test = testset.data, testset.targets,
@@ -126,9 +126,9 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
         }
 
         trainset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = True,
-                                        download=True, transform = tsf['train'])
+                                        download=False, transform = tsf['train'])
         testset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = False,
-                                       download=True, transform = tsf['test'])
+                                       download=False, transform = tsf['test'])
 
     x_train, y_train = trainset.data, trainset.targets,
     x_test, y_test = testset.data, testset.targets,
@@ -232,8 +232,8 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
 
     psnr = get_PSNR(ref_img, inv_img, peak=1.0)
 
-    print("ref_img.shape", ref_img.shape)
-    print("inv_img.shape", inv_img.shape)
+    #print("ref_img.shape", ref_img.shape)
+    #print("inv_img.shape", inv_img.shape)
     ssim = compare_ssim(
         X=np.moveaxis(ref_img, 0, -1),
         Y=np.moveaxis(inv_img, 0, -1),
