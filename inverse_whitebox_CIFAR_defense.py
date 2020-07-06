@@ -41,12 +41,12 @@ from skimage.measure import compare_ssim
 # python inverse_whitebox_CIFAR.py --iters 500 --learning_rate 5e-2 --layer label --lambda_TV 5e-1 --lambda_l2 0.0
 
 # Gaussian and laplace noise
-# python inverse_whitebox_CIFAR_defense.py --noise_type Laplace --layer ReLU2
-# python inverse_whitebox_CIFAR_defense.py --noise_type Laplace --layer ReLU2 --add_noise_to_input
+# python inverse_whitebox_CIFAR_defense.py --noise_type Laplace --layer ReLU22
+# python inverse_whitebox_CIFAR_defense.py --noise_type Laplace --layer ReLU22 --add_noise_to_input
 
 # Dropout
-# python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU2
-# python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU2 --add_noise_to_input
+# python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU22
+# python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU22 --add_noise_to_input
 
 #####################
 
@@ -231,7 +231,7 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
     #print "inv_img ", inv_img.min(), inv_img.max()
 
     psnr = get_PSNR(ref_img, inv_img, peak=1.0)
-    ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=False)
+    ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=True)
 
     #print "targetImg l1 Stat:"
     #getL1Stat(net, targetImg)
