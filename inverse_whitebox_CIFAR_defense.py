@@ -234,7 +234,11 @@ def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidt
 
     print("ref_img.shape", ref_img.shape)
     print("inv_img.shape", inv_img.shape)
-    ssim = compare_ssim(ref_img, inv_img, data_range = inv_img.max() - inv_img.min(), multichannel=True)
+    ssim = compare_ssim(
+        X=np.moveaxis(ref_img, 0, -1),
+        Y=np.moveaxis(inv_img, 0, -1),
+        data_range = inv_img.max() - inv_img.min(),
+        multichannel=True)
 
     #print "targetImg l1 Stat:"
     #getL1Stat(net, targetImg)
