@@ -41,18 +41,12 @@ from skimage.measure import compare_ssim
 # python inverse_whitebox_CIFAR.py --iters 500 --learning_rate 5e-2 --layer label --lambda_TV 5e-1 --lambda_l2 0.0
 
 # Gaussian and laplace noise
-# python inverse_whitebox_MNIST_defense.py --noise_type Laplace --layer ReLU2
-# python inverse_whitebox_MNIST_defense.py --noise_type Laplace --layer ReLU2 --add_noise_to_input
+# python inverse_whitebox_CIFAR_defense.py --noise_type Laplace --layer ReLU2
+# python inverse_whitebox_CIFAR_defense.py --noise_type Laplace --layer ReLU2 --add_noise_to_input
 
 # Dropout
-# python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer ReLU2
-# python inverse_whitebox_MNIST_defense.py --noise_type dropout --layer ReLU2 --add_noise_to_input
-
-# Noise opt
-# Generate a noise applied to noise_targetLayer that minimize the difference in noise_targetLayer
-# python noise_generation_opt.py --noise_sourceLayer ReLU2 --noise_targetLayer fc1
-# python inverse_whitebox_MNIST_defense.py --noise_type noise_gen --noise_targetLayer fc1
-# python noise_generation_opt.py --noise_sourceLayer conv2 --noise_targetLayer ReLU2 --noise_lambda_sourcelayer 1e-3 --noise_level 200
+# python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU2
+# python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU2 --add_noise_to_input
 
 #####################
 
@@ -77,8 +71,6 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/CIFA
             ])
         }
 
-        trainset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = True,
-                                        download=True, transform = tsf['train'])
         testset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = False,
                                        download=True, transform = tsf['test'])
 
@@ -104,40 +96,38 @@ def eval_DP_defense(args, noise_type, noise_level, model_dir = "checkpoints/CIFA
         )
     return acc
 
-def inverse(DATASET = 'MNIST', network = 'LeNet', NIters = 500, imageWidth = 28, inverseClass = None,
-        imageHeight = 28, imageSize = 28*28, NChannels = 1, NClasses = 10, layer = 'conv2',
+def inverse(DATASET = 'CIFAR10', network = 'CIFAR10CNN', NIters = 500, imageWidth = 32, inverseClass = None,
+        imageHeight = 32, imageSize = 32*32, NChannels = 3, NClasses = 10, layer = 'conv22',
         BatchSize = 32, learningRate = 1e-3, NDecreaseLR = 20, eps = 1e-3, lambda_TV = 1e3, lambda_l2 = 1.0,
-        AMSGrad = True, model_dir = "checkpoints/MNIST/", model_name = "ckpt.pth",
-        save_img_dir = "inverted/MNIST/MSE_TV/", saveIter = 10, gpu = True, validation=False,
+        AMSGrad = True, model_dir = "checkpoints/CIFAR10/", model_name = "ckpt.pth",
+        save_img_dir = "inverted/CIFAR10/MSE_TV/", saveIter = 10, gpu = True, validation=False,
         noise_type = None, noise_level = 0.0, args=None):
 
     assert inverseClass < NClasses
 
-    if DATASET == 'MNIST':
+    if DATASET == 'CIFAR10':
 
-        mu = torch.tensor([0.5], dtype=torch.float32)
-        sigma = torch.tensor([0.5], dtype=torch.float32)
+        mu = torch.tensor([0.485, 0.456, 0.406], dtype=torch.float32)
+        sigma = torch.tensor([0.229, 0.224, 0.225], dtype=torch.float32)
         Normalize = transforms.Normalize(mu.tolist(), sigma.tolist())
         Unnormalize = transforms.Normalize((-mu / sigma).tolist(), (1.0 / sigma).tolist())
 
         tsf = {
             'train': transforms.Compose(
             [
-                transforms.ToTensor(),
-                Normalize
+            transforms.ToTensor(),
+            Normalize
             ]),
-
             'test': transforms.Compose(
             [
-                transforms.ToTensor(),
-                Normalize
+            transforms.ToTensor(),
+            Normalize
             ])
         }
 
-        trainset = torchvision.datasets.MNIST(root='./data/MNIST', train=True,
+        trainset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = True,
                                         download=True, transform = tsf['train'])
-
-        testset = torchvision.datasets.MNIST(root='./data/MNIST', train=False,
+        testset = torchvision.datasets.CIFAR10(root='./data/CIFAR10', train = False,
                                        download=True, transform = tsf['test'])
 
     x_train, y_train = trainset.data, trainset.targets,
