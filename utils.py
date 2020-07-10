@@ -77,7 +77,6 @@ def deprocess(data):
         mu = torch.tensor([0.5], dtype=torch.float32)
         sigma = torch.tensor([0.5], dtype=torch.float32)
     elif NChannels == 3:
-        print "deprocessing here"
         mu = torch.tensor([0.485, 0.456, 0.406], dtype=torch.float32)
         sigma = torch.tensor([0.229, 0.224, 0.225], dtype=torch.float32)
     else:
