@@ -78,24 +78,74 @@ Noise_type: Gaussian  Add to input: True  Noise_level: 4.0  Acc: 0.1166  PSNR: 1
 Noise_type: Gaussian  Add to input: True  Noise_level: 4.5  Acc: 0.1164  PSNR: 9.7488  SSIM: 0.0602
 Noise_type: Gaussian  Add to input: True  Noise_level: 5.0  Acc: 0.1144  PSNR: 9.5669  SSIM: 0.0596
 
-Noise_type: dropout  Add to input: False  Noise_level: 0.0  Acc: 0.8719  PSNR: 12.5523  SSIM: 0.0733
-Noise_type: dropout  Add to input: False  Noise_level: 0.1  Acc: 0.8725  PSNR: 12.5303  SSIM: 0.0613
-Noise_type: dropout  Add to input: False  Noise_level: 0.2  Acc: 0.8726  PSNR: 12.4977  SSIM: 0.0547
-Noise_type: dropout  Add to input: False  Noise_level: 0.3  Acc: 0.8681  PSNR: 12.4694  SSIM: 0.0392
-Noise_type: dropout  Add to input: False  Noise_level: 0.4  Acc: 0.8692  PSNR: 12.457  SSIM: 0.031
-Noise_type: dropout  Add to input: False  Noise_level: 0.5  Acc: 0.8593  PSNR: 12.4215  SSIM: 0.0243
-Noise_type: dropout  Add to input: False  Noise_level: 0.6  Acc: 0.8529  PSNR: 12.4096  SSIM: 0.0219
-Noise_type: dropout  Add to input: False  Noise_level: 0.7  Acc: 0.8429  PSNR: 12.3948  SSIM: 0.0156
-Noise_type: dropout  Add to input: False  Noise_level: 0.8  Acc: 0.8145  PSNR: 12.3817  SSIM: 0.011
-Noise_type: dropout  Add to input: False  Noise_level: 0.9  Acc: 0.7368  PSNR: 12.371  SSIM: 0.006
+# ReLU22
+Noise_type: dropout  Add to input: False  Noise_level: 0.0  Acc: 0.8719  PSNR: 18.4933  SSIM: 0.6268
+Noise_type: dropout  Add to input: False  Noise_level: 0.1  Acc: 0.8714  PSNR: 17.4924  SSIM: 0.5701
+Noise_type: dropout  Add to input: False  Noise_level: 0.2  Acc: 0.8699  PSNR: 16.5148  SSIM: 0.496
+Noise_type: dropout  Add to input: False  Noise_level: 0.3  Acc: 0.8666  PSNR: 15.6537  SSIM: 0.4238
+Noise_type: dropout  Add to input: False  Noise_level: 0.4  Acc: 0.8641  PSNR: 14.5277  SSIM: 0.343
+Noise_type: dropout  Add to input: False  Noise_level: 0.5  Acc: 0.8628  PSNR: 13.761  SSIM: 0.2553
+Noise_type: dropout  Add to input: False  Noise_level: 0.6  Acc: 0.8516  PSNR: 12.9624  SSIM: 0.1316
+Noise_type: dropout  Add to input: False  Noise_level: 0.7  Acc: 0.841  PSNR: 12.6163  SSIM: 0.0817
+Noise_type: dropout  Add to input: False  Noise_level: 0.8  Acc: 0.8148  PSNR: 12.5537  SSIM: 0.0507
+Noise_type: dropout  Add to input: False  Noise_level: 0.9  Acc: 0.7275  PSNR: 12.4258  SSIM: 0.0213
 
-Noise_type: dropout  Add to input: True  Noise_level: 0.0  Acc: 0.8719  PSNR: 12.5523  SSIM: 0.0733
-Noise_type: dropout  Add to input: True  Noise_level: 0.1  Acc: 0.6966  PSNR: 12.4893  SSIM: 0.0461
-Noise_type: dropout  Add to input: True  Noise_level: 0.2  Acc: 0.5188  PSNR: 12.4543  SSIM: 0.0302
-Noise_type: dropout  Add to input: True  Noise_level: 0.3  Acc: 0.3804  PSNR: 12.4347  SSIM: 0.0345
-Noise_type: dropout  Add to input: True  Noise_level: 0.4  Acc: 0.2815  PSNR: 12.4148  SSIM: 0.0253
-Noise_type: dropout  Add to input: True  Noise_level: 0.5  Acc: 0.2267  PSNR: 12.4064  SSIM: 0.0219
-Noise_type: dropout  Add to input: True  Noise_level: 0.6  Acc: 0.1871  PSNR: 12.3903  SSIM: 0.0162
-Noise_type: dropout  Add to input: True  Noise_level: 0.7  Acc: 0.1532  PSNR: 12.3902  SSIM: 0.0195
-Noise_type: dropout  Add to input: True  Noise_level: 0.8  Acc: 0.1386  PSNR: 12.382  SSIM: 0.0165
-Noise_type: dropout  Add to input: True  Noise_level: 0.9  Acc: 0.1318  PSNR: 12.3836  SSIM: 0.0148
+# Input
+Noise_type: dropout  Add to input: True  Noise_level: 0.0  Acc: 0.8719  PSNR: 18.4931  SSIM: 0.6269
+Noise_type: dropout  Add to input: True  Noise_level: 0.1  Acc: 0.6957  PSNR: 16.6043  SSIM: 0.4843
+Noise_type: dropout  Add to input: True  Noise_level: 0.2  Acc: 0.5179  PSNR: 15.8316  SSIM: 0.4119
+Noise_type: dropout  Add to input: True  Noise_level: 0.3  Acc: 0.3829  PSNR: 15.0983  SSIM: 0.3377
+Noise_type: dropout  Add to input: True  Noise_level: 0.4  Acc: 0.2905  PSNR: 14.5968  SSIM: 0.2992
+Noise_type: dropout  Add to input: True  Noise_level: 0.5  Acc: 0.2261  PSNR: 14.1891  SSIM: 0.2481
+Noise_type: dropout  Add to input: True  Noise_level: 0.6  Acc: 0.1856  PSNR: 13.7152  SSIM: 0.2054
+Noise_type: dropout  Add to input: True  Noise_level: 0.7  Acc: 0.1564  PSNR: 13.3834  SSIM: 0.1616
+Noise_type: dropout  Add to input: True  Noise_level: 0.8  Acc: 0.1383  PSNR: 13.0459  SSIM: 0.124
+Noise_type: dropout  Add to input: True  Noise_level: 0.9  Acc: 0.1293  PSNR: 12.8092  SSIM: 0.0696
+
+# ReLU12
+Noise_type: dropout  Add to input: False  Noise_level: 0.0  Acc: 0.8719  PSNR: 28.0323  SSIM: 0.9326
+Noise_type: dropout  Add to input: False  Noise_level: 0.1  Acc: 0.8704  PSNR: 20.7699  SSIM: 0.7747
+Noise_type: dropout  Add to input: False  Noise_level: 0.2  Acc: 0.8638  PSNR: 18.3205  SSIM: 0.6726
+Noise_type: dropout  Add to input: False  Noise_level: 0.3  Acc: 0.8621  PSNR: 16.7068  SSIM: 0.5852
+Noise_type: dropout  Add to input: False  Noise_level: 0.4  Acc: 0.8567  PSNR: 15.2288  SSIM: 0.4928
+Noise_type: dropout  Add to input: False  Noise_level: 0.5  Acc: 0.8467  PSNR: 14.0878  SSIM: 0.412
+Noise_type: dropout  Add to input: False  Noise_level: 0.6  Acc: 0.8334  PSNR: 13.3254  SSIM: 0.3571
+Noise_type: dropout  Add to input: False  Noise_level: 0.7  Acc: 0.8052  PSNR: 12.5564  SSIM: 0.2794
+Noise_type: dropout  Add to input: False  Noise_level: 0.8  Acc: 0.7491  PSNR: 11.9465  SSIM: 0.19
+Noise_type: dropout  Add to input: False  Noise_level: 0.9  Acc: 0.5744  PSNR: 11.5728  SSIM: 0.1104
+
+# pool1
+Noise_type: dropout  Add to input: False  Noise_level: 0.0  Acc: 0.8719  PSNR: 19.2593  SSIM: 0.7015
+Noise_type: dropout  Add to input: False  Noise_level: 0.1  Acc: 0.8687  PSNR: 16.8211  SSIM: 0.5747
+Noise_type: dropout  Add to input: False  Noise_level: 0.2  Acc: 0.8615  PSNR: 15.2268  SSIM: 0.4668
+Noise_type: dropout  Add to input: False  Noise_level: 0.3  Acc: 0.8552  PSNR: 14.1393  SSIM: 0.4032
+Noise_type: dropout  Add to input: False  Noise_level: 0.4  Acc: 0.846  PSNR: 13.2328  SSIM: 0.3451
+Noise_type: dropout  Add to input: False  Noise_level: 0.5  Acc: 0.8224  PSNR: 12.4704  SSIM: 0.2829
+Noise_type: dropout  Add to input: False  Noise_level: 0.6  Acc: 0.7922  PSNR: 11.8904  SSIM: 0.2427
+Noise_type: dropout  Add to input: False  Noise_level: 0.7  Acc: 0.7381  PSNR: 11.2691  SSIM: 0.1865
+Noise_type: dropout  Add to input: False  Noise_level: 0.8  Acc: 0.6075  PSNR: 10.9305  SSIM: 0.1388
+Noise_type: dropout  Add to input: False  Noise_level: 0.9  Acc: 0.365  PSNR: 10.9426  SSIM: 0.079
+
+# conv22
+Noise_type: dropout  Add to input: False  Noise_level: 0.0  Acc: 0.8719  PSNR: 19.5655  SSIM: 0.7461
+Noise_type: dropout  Add to input: False  Noise_level: 0.1  Acc: 0.8728  PSNR: 18.4557  SSIM: 0.6945
+Noise_type: dropout  Add to input: False  Noise_level: 0.2  Acc: 0.8714  PSNR: 17.4668  SSIM: 0.6437
+Noise_type: dropout  Add to input: False  Noise_level: 0.3  Acc: 0.8697  PSNR: 16.3086  SSIM: 0.5649
+Noise_type: dropout  Add to input: False  Noise_level: 0.4  Acc: 0.8663  PSNR: 15.405  SSIM: 0.4974
+Noise_type: dropout  Add to input: False  Noise_level: 0.5  Acc: 0.865  PSNR: 14.5783  SSIM: 0.4225
+Noise_type: dropout  Add to input: False  Noise_level: 0.6  Acc: 0.8539  PSNR: 13.996  SSIM: 0.3469
+Noise_type: dropout  Add to input: False  Noise_level: 0.7  Acc: 0.839  PSNR: 13.3614  SSIM: 0.2615
+Noise_type: dropout  Add to input: False  Noise_level: 0.8  Acc: 0.8131  PSNR: 12.8345  SSIM: 0.1726
+Noise_type: dropout  Add to input: False  Noise_level: 0.9  Acc: 0.7353  PSNR: 12.4841  SSIM: 0.0688
+
+# pool2
+Noise_type: dropout  Add to input: False  Noise_level: 0.0  Acc: 0.8719  PSNR: 18.3337  SSIM: 0.6283
+Noise_type: dropout  Add to input: False  Noise_level: 0.1  Acc: 0.8709  PSNR: 16.724  SSIM: 0.5177
+Noise_type: dropout  Add to input: False  Noise_level: 0.2  Acc: 0.8678  PSNR: 15.4599  SSIM: 0.399
+Noise_type: dropout  Add to input: False  Noise_level: 0.3  Acc: 0.86  PSNR: 14.341  SSIM: 0.314
+Noise_type: dropout  Add to input: False  Noise_level: 0.4  Acc: 0.8519  PSNR: 13.7289  SSIM: 0.2515
+Noise_type: dropout  Add to input: False  Noise_level: 0.5  Acc: 0.843  PSNR: 13.3351  SSIM: 0.183
+Noise_type: dropout  Add to input: False  Noise_level: 0.6  Acc: 0.8223  PSNR: 12.9222  SSIM: 0.1334
+Noise_type: dropout  Add to input: False  Noise_level: 0.7  Acc: 0.7961  PSNR: 12.6482  SSIM: 0.0989
+Noise_type: dropout  Add to input: False  Noise_level: 0.8  Acc: 0.7379  PSNR: 12.4534  SSIM: 0.0558
+Noise_type: dropout  Add to input: False  Noise_level: 0.9  Acc: 0.583  PSNR: 12.282  SSIM: 0.0295
