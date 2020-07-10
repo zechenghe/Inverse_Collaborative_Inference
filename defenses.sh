@@ -15,12 +15,12 @@ Dropout (){
 }
 
 Dropout_CIFAR (){
-    python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU22 --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
-    python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU22 --add_noise_to_input --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
-    python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU12 --iters 5000 --learning_rate 1e-2 --lambda_TV 0.0 --lambda_l2 0.0
-    python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer pool1 --iters 5000 --learning_rate 1e-2 --lambda_TV 0.0 --lambda_l2 0.0
-    python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer conv22 --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
-    python inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer pool2 --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
+    python2 inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU22 --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
+    python2 inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU22 --add_noise_to_input --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
+    python2 inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer ReLU12 --iters 5000 --learning_rate 1e-2 --lambda_TV 0.0 --lambda_l2 0.0
+    python2 inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer pool1 --iters 5000 --learning_rate 1e-2 --lambda_TV 0.0 --lambda_l2 0.0
+    python2 inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer conv22 --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
+    python2 inverse_whitebox_CIFAR_defense.py --noise_type dropout --layer pool2 --iters 5000 --learning_rate 1e-2 --lambda_TV 1e1 --lambda_l2 0.0
 }
 
 # Opt noise generation
