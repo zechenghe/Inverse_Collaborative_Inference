@@ -1,8 +1,10 @@
 # Model Inversion Attack against Collaborative Inference
 
-This code implements model inversion attacks against collaborative inference in the following two [paper1](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf) and [paper2](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Attacking%20and%20Protecting%20Data%20Privacy%20in%20Edge-Cloud%20Collaborative%20Inference%20Systems.pdf):
+This code implements model inversion attacks against collaborative inference in the following two papers: [paper1](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf)
 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019
+
+[paper2](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Attacking%20and%20Protecting%20Data%20Privacy%20in%20Edge-Cloud%20Collaborative%20Inference%20Systems.pdf):
 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Attacking and Protecting Data Privacy in Edge-Cloud Collaborative Inference Systems", IEEE Internet of Things Journal (IoTJ), 2020
 
