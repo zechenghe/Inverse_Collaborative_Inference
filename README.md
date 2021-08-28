@@ -56,7 +56,7 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 <br/>
 
 ### 4.Reference
-You are encouraged to cite the following paper.
+You are encouraged to cite the following papers.
 ```
 @inproceedings{he2019model,
   title={Model inversion attacks against collaborative inference},
@@ -65,5 +65,13 @@ You are encouraged to cite the following paper.
   pages={148--162},
   year={2019},
   organization={ACM}
+}
+
+@article{he2020attacking,
+  title={Attacking and Protecting Data Privacy in Edge-Cloud Collaborative Inference Systems},
+  author={He, Zecheng and Zhang, Tianwei and Lee, Ruby B},
+  journal={IEEE Internet of Things Journal},
+  year={2020},
+  publisher={IEEE}
 }
 ```
