@@ -1,10 +1,14 @@
 # Model Inversion Attack against Collaborative Inference
 
-This code implements model inversion attacks against collaborative inference in the following [paper](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf) and [paper]():
+This code implements model inversion attacks against collaborative inference in the following two [paper1](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf) and [paper2](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Attacking%20and%20Protecting%20Data%20Privacy%20in%20Edge-Cloud%20Collaborative%20Inference%20Systems.pdf):
 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019
 
-We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Section 5) and query-free attack (Section 6) on CIFAR10 dataset. Attacks against MNIST are similar.
+Zecheng He, Tianwei Zhang and Ruby Lee, "Attacking and Protecting Data Privacy in Edge-Cloud Collaborative Inference Systems", IEEE Internet of Things Journal (IoTJ), 2020
+
+In [paper1](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf), we provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Section 5) and query-free attack (Section 6) on CIFAR10 dataset. Attacks against MNIST are similar.
+
+In [paper2](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Attacking%20and%20Protecting%20Data%20Privacy%20in%20Edge-Cloud%20Collaborative%20Inference%20Systems.pdf), we provide adding noise and dropout as defenses (Section IV).
 
 ### 1.Dependencies:
 #### python 2.7
@@ -39,6 +43,10 @@ We provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Secti
 
 #### Inverse the shadow model
     python inverse_query_free_CIFAR.py --testing --layer ReLU22 --iter 500 --learning_rate 1e-1 --lambda_TV 2e0 --lambda_l2 0.0
+
+#### (5) Defense (Paper 2 Section IV)
+
+    ./defense.sh
 
 <br/>
 
