@@ -5,7 +5,7 @@ This code implements model inversion attacks against collaborative inference in 
 Zecheng He, Tianwei Zhang and Ruby Lee, "Model Inversion Attacks Against Collaborative Inference", 35th Annual Computer Security Applications Conference (ACSAC'19), San Juan, Dec 2019 [paper1](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf)
 
 
-Zecheng He, Tianwei Zhang and Ruby Lee, "Attacking and Protecting Data Privacy in Edge-Cloud Collaborative Inference Systems", IEEE Internet of Things Journal (IoTJ), 2020 [paper2](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Attacking%20and%20Protecting%20Data%20Privacy%20in%20Edge-Cloud%20Collaborative%20Inference%20Systems.pdf):
+Zecheng He, Tianwei Zhang and Ruby Lee, "Attacking and Protecting Data Privacy in Edge-Cloud Collaborative Inference Systems", IEEE Internet of Things Journal (IoTJ), 2020 [paper2](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Attacking%20and%20Protecting%20Data%20Privacy%20in%20Edge-Cloud%20Collaborative%20Inference%20Systems.pdf)
 
 In [paper1](https://github.com/zechenghe/Inverse_Collaborative_Inference/blob/master/Model%20Inversion%20Attacks%20Against%20Collaborative%20Inference.pdf), we provide three attacks, i.e. rMSE (Section 4), blackbox inverse network (Section 5) and query-free attack (Section 6) on CIFAR10 dataset. Attacks against MNIST are similar.
 
