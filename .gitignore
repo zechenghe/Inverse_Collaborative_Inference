@@ -3,6 +3,7 @@
 *.npy
 data/
 checkpoints/
+inverted_whitebox/
 inverted_access_free/
 inverted_blackbox_decoder/
 noise/
